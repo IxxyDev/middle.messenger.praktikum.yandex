@@ -4,8 +4,8 @@
   "description": "### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main.  ### ВАЖНО: pull request должен называться “Sprint i” (i — номер спринта).",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "node ./server.js",
+    "build": "parcel build './src/**/*.pug'"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,12 @@
   },
   "homepage": "https://github.com/IxxyDev/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
+    "nodemon": "^2.0.15",
     "parcel-bundler": "^1.12.5",
     "pug": "^3.0.2",
     "sass": "^1.44.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
