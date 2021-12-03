@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/IxxyDev/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "pug": "^3.0.2",
+    "sass": "^1.44.0"
   }
 }
