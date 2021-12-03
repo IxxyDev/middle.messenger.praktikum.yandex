@@ -1,0 +1,12 @@
+extends ../layouts/content
+include ../mixins/errorPage
+append head
+  title 404
+  //- link(rel="stylesheet", href="/styles/error-page.scss")
+block content
+  +errorPage({
+    title: '500',
+    text: 'Sorry, we are fixing it',
+    linkText: 'Back to chats',
+    href: '/',
+  })
