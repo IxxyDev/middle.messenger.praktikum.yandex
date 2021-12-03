@@ -1,0 +1,7 @@
+extends ./layouts/content
+append head
+  title Главная  
+  link(rel="stylesheet", href="/styles/index.scss")
+block content
+  a(href='./pages/404.pug') 404
+  a(href='./pages/500.pug') 500
