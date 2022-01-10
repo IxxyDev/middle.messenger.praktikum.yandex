@@ -1,0 +1,6 @@
+mixin errorPage(error)
+  .error-wrapper
+    .error-info
+      h1.error-title=error.title
+      p.error-text=error.text
+    a.default-link(href=`${error.href}`)=error.linkText
