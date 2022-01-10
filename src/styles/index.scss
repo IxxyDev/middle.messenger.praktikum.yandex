@@ -33,3 +33,9 @@ ul {
   justify-content: center;
   height: 100vh;
 }
+
+.root {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
