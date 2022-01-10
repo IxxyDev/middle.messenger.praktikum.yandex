@@ -1,6 +1,7 @@
 .profile {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 40%;
 }
 
 .profile__user {
@@ -8,13 +9,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 50px 72px;
 }
 
 .profile__image {
   border-radius: 50%;
+  width: 130px;
+  height: 130px;
 }
 
 .profile__name {
   font-size: 16px;
   line-height: 1;
+  font-weight: 600;
+}
+
+.profile__info-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #999;
+}
+
+.profile__sign-out-link {
+  color: red;
 }
