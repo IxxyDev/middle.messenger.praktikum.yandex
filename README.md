@@ -1,2 +1,19 @@
-Pull request
-https://github.com/IxxyDev/middle.messenger.praktikum.yandex/pull/1
+Web messenger in middle Yandex.Practicum course
+
+- Project is in draft phase.
+- Share messages, waste your time more effectively!
+
+
+## Description
+No frameworks, pure JS web messenger. Your useless chats will load faster! 
+
+## Установка
+
+- `npm install` — install,
+- `npm start` — launch,
+- suffer
+
+[Макет](https://www.figma.com/file/JzoXo8NR1FWPsCydl123Wt/Messenger?node-id=1%3A26) (пока стоковый, но со второго спринта будет перерисован)
+
+[Netlify](https://deploy-preview-1--condescending-franklin-13fc1c.netlify.app/)
+
