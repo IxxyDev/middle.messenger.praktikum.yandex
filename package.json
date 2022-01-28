@@ -1,0 +1,31 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main.  ### ВАЖНО: pull request должен называться “Sprint i” (i — номер спринта).",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && nodemon ./server.js",
+    "build": "rm -rf dist && parcel build './src/**/*.pug'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IxxyDev/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IxxyDev/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/IxxyDev/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "parcel-bundler": "^1.12.5",
+    "postcss-preset-env": "^7.0.1",
+    "pug": "^3.0.2",
+    "sass": "^1.44.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
