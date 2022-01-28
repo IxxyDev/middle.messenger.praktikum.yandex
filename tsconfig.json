@@ -6,5 +6,6 @@
 		"module": "commonjs",
 		"strictNullChecks": true,
 		"sourceMap": true,
+        "baseUrl": "./src"
 	}
 }
