@@ -1,11 +1,16 @@
 {
 	"compilerOptions": {
 		"outDir": "dist",
-		"target": "es2016",
+		"target": "es6",
 		"declaration": false,
 		"module": "commonjs",
 		"strictNullChecks": true,
 		"sourceMap": true,
-        "baseUrl": "./src"
-	}
+        "baseUrl": ".",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitAny": true,
+	},
+    "exclude": ["node_modules"],
+    "include": ["src/**/*", ".d.ts"]
 }
