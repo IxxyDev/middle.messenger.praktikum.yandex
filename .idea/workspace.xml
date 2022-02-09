@@ -2,36 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eed2d66-8b61-4255-9bfe-54d58c22ece0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.module.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.stylelintrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Inter-Regular.d0352803.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Inter-SemiBold.6af564cd.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/error-page.45e217cb.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/error-page.45e217cb.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/form.2b462022.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/form.2b462022.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/layouts/content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/layouts/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mixins/errorPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mixins/form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/no-image.7ff10408.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/sign-in.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/sign-up.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/profile.549df5cc.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/profile.549df5cc.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/styles.48c697a2.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/styles.48c697a2.css.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +49,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -91,6 +67,9 @@
       <updated>1641904431008</updated>
       <workItem from="1641904432950" duration="2541000" />
       <workItem from="1642410676729" duration="3541000" />
+      <workItem from="1643455465774" duration="598000" />
+      <workItem from="1643473640810" duration="598000" />
+      <workItem from="1644424982901" duration="432000" />
     </task>
     <servers />
   </component>
