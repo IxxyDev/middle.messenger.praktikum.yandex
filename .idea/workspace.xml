@@ -2,11 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eed2d66-8b61-4255-9bfe-54d58c22ece0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.stylelintrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/uuid" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/uuid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/AUTHORS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/uuid/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/uuid/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/uuid/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/bin/uuid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/bytesToUuid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/md5-browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/md5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/rng-browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/rng.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/sha1-browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/sha1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/lib/v35.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/uuid/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/v1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/v3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/v4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/uuid/v5.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Block/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,15 +67,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="TypeScript" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReaderModeSettings">
     <option name="showLigatures" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Block" />
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -69,7 +96,7 @@
       <workItem from="1642410676729" duration="3541000" />
       <workItem from="1643455465774" duration="598000" />
       <workItem from="1643473640810" duration="598000" />
-      <workItem from="1644424982901" duration="432000" />
+      <workItem from="1644424982901" duration="3844000" />
     </task>
     <servers />
   </component>
