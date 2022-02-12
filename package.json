@@ -25,6 +25,7 @@
     },
     "homepage": "https://github.com/IxxyDev/middle.messenger.praktikum.yandex#readme",
     "devDependencies": {
+        "@types/uuid": "^8.3.4",
         "@typescript-eslint/eslint-plugin": "^5.10.1",
         "@typescript-eslint/parser": "^5.10.1",
         "eslint": "^8.7.0",
