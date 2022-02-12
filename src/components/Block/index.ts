@@ -26,7 +26,7 @@ export type Meta = {
 
 export default abstract class Block {
 	private readonly id: string;
-	private eventBus: () => eventBus
+	private eventBus: () => EventBus
 	private element: HTMLElement
 	private content: HTMLDivElement
 

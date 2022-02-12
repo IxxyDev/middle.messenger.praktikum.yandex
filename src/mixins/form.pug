@@ -17,4 +17,5 @@ mixin form(method, action, inputs, submitButtonLabel, linkText)
           autocomplete = input.autocomplete
         )
     button.form__button(type="submit")=submitButtonLabel
+    if linkText
     a.form__link(href='/')=linkText
