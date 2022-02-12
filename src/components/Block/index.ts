@@ -1,4 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
+import EventBus from "../../utils/eventBus";
+import DOMParser from "../../utils/DOMParser";
 
 enum EVENTS {
 	INIT = "init",
@@ -31,15 +33,16 @@ export default abstract class Block {
 	props: Props
 	meta: Meta
 
-	constructor(props: Props = {}, settings: Settings = {}) {
+	protected constructor(props: Props = {}, settings: Settings = {}) {
 		this.meta = {
 			props,
 			withInternalId: settings.withInternalId
 		}
 
 		const eventBus = new EventBus()
-
-		this.id = this.meta.withInternalId && uuidv4()
+		if (this.meta.withInternalId) {
+			this.id = uuidv4()
+		}
 		this.props = this.makePropsProxy({ ...props })
 		this.eventBus = () => eventBus
 		this.registerEvents(eventBus)
@@ -66,11 +69,11 @@ export default abstract class Block {
 		})
 	}
 
-	private registerEvents() {
-		eventBus.on(EVENTS.INIT, this.init.bind(this))
-		eventBus.on(EVENTS.FLOW_CDM, this.componentDidMount.bind(this))
-		eventBus.on(EVENTS.FLOW_CDU, this.componentDidUpdate.bind(this))
-		eventBus.on(EVENTS.FLOW_RENDER, this.render.bind(this))
+	private registerEvents(eventBus: EventBus) {
+		eventBus.on({ event: EVENTS.INIT, callback: this.init.bind(this)})
+		eventBus.on({ event: EVENTS.FLOW_CDM, callback: this.componentDidMount.bind(this)})
+		eventBus.on({ event: EVENTS.FLOW_CDU, callback: this.componentDidUpdate.bind(this)})
+		eventBus.on({ event: EVENTS.FLOW_RENDER, callback: this.render.bind(this)})
 	}
 
 	private createResources() {
@@ -99,11 +102,53 @@ export default abstract class Block {
 		}
 	}
 
-	private render() {
+	abstract renderBlock(): string | HTMLElement
 
+	private render() {
+		const block = this.renderBlock();
+
+		if (typeof block === 'string') {
+			const element = DOMParser(block);
+			if (this.meta.withInternalId) {
+				element.setAttribute("data-id", this.id)
+			}
+			this.removeEvents()
+			this.element = element
+			this.addEvents()
+		} else {
+			this.removeEvents()
+			this.element = block
+			this.addEvents()
+		}
+
+		this.content.innerHTML = ''
+		this.content.appendChild(this.element)
 	}
 
-	get element() {
+	private addEvents(): void {
+		if (this.element) {
+			const {events = {}} = this.props
+
+			const keys = Object.keys(events)
+			for (const key of keys) {
+				this.element.addEventListener(key, events[key])
+			}
+		}
+	}
+
+	private removeEvents(): void {
+		if (this.element) {
+			const {events = {}} = this.props
+
+			const keys = Object.keys(events)
+			for (const key of keys) {
+				this.element.removeEventListener(key, events[key])
+			}
+		}
+	}
+
+
+	getElement() {
 		return this.element
 	}
 

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7eed2d66-8b61-4255-9bfe-54d58c22ece0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/HTTPTransport.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/eventBus.ts" afterDir="false" />
+    <list default="true" id="7eed2d66-8b61-4255-9bfe-54d58c22ece0" name="Changes" comment="feat: add HTTPTransport class scratch">
+      <change afterPath="$PROJECT_DIR$/src/mixins/chatItem.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/DOMParser.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Block/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Block/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="Pug File" />
       </list>
     </option>
   </component>
@@ -77,8 +81,16 @@
       <workItem from="1643455465774" duration="598000" />
       <workItem from="1643473640810" duration="598000" />
       <workItem from="1644424982901" duration="7343000" />
-      <workItem from="1644532059988" duration="1327000" />
+      <workItem from="1644532059988" duration="5537000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: add HTTPTransport class scratch">
+      <created>1644533524349</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644533524349</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,5 +106,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: add HTTPTransport class scratch" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add HTTPTransport class scratch" />
   </component>
 </project>
