@@ -1,0 +1,59 @@
+extends ../layouts/content
+include ../mixins/chat
+include ../mixins/form
+
+append head
+  title Chat
+  link(rel='stylesheet', href='/styles/chat.css')
+block content
+  .chat-page
+    .sidebar
+      nav.sidebar__nav
+        a.sidebar__link(href='#') Profile
+        span.sidebar__arrow-icon >
+      .sidebar__search
+        input.sidebar__search-input(type='text' placeholder='Search')
+      ul.chats
+        each item in Array(15)
+          +chat({
+            name: 'Albert Einstein',
+            avatar: '../../static/images/default-avatar.png',
+            message: 'Lorem ipsum',
+            newMessage: Math.random() > 0.5,
+            newMessageCount: 10 * Math.random(),
+            time: '12:00',
+          })
+      .chat
+        header.chat__header
+        .chat__user-info
+          img.chat__avatar(src='../../static/images/default-avatar.png', alt='User avatar')
+          p.chat__username Albert Einstein
+        .chat__settings
+          button.chat__settings-button
+            span Some Icon here
+        .chat__body
+          ul.chat__messages
+            each message in messages
+              +message(message)
+        .chat__actions
+          button.chat__attach-button
+            span Some File Icon here
+          //dropdown here
+        form.chat__message(action='/')
+          input.chat__message-input(type='Text', placeholder='Your message', name='message')
+          button
+            span Some Send Message Icon here
+  +form('post', '#', [{
+      label: 'Login',
+      placeholder: 'Login',
+      required: true,
+      name: 'login',
+      id: 'login',
+      type: 'text',
+      maxlength: 30,
+      minlength: 3,
+      autofocus: true,
+      autocomplete: true,
+    }],
+    'Add user',
+  )

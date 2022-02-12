@@ -1,15 +1,3 @@
-mixin chat(data)
-  li.chat-list__item(class=data.current ? 'chat-list__item--active' : '')
-    .chat-list__image-wrap
-      img.chat-list__image(src=data.avatar)
-    .chat-list__content
-      strong.chat-list__name=data.name
-      span.chat-list__message=data.message
-    .chat-list__info
-      time.chat-list__time=data.time
-      if (data.newMessage && data.newMessageCount)
-        span.chat-list__message-count= data.newMessageCount
-//- Элемент сообщения чата
 mixin message(data)
   if (data.type === `date` && data.date)
     li.chat-content__message-date=data.date

@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eed2d66-8b61-4255-9bfe-54d58c22ece0" name="Changes" comment="feat: add HTTPTransport class scratch">
-      <change afterPath="$PROJECT_DIR$/src/mixins/chatItem.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/DOMParser.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mixins/message.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/chat.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/default-avatar.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Block/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Block/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mixins/chatItem.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/chat.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +62,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/images" />
       <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/src/components/Block" />
       <recent name="$PROJECT_DIR$/src/components" />
@@ -81,7 +81,7 @@
       <workItem from="1643455465774" duration="598000" />
       <workItem from="1643473640810" duration="598000" />
       <workItem from="1644424982901" duration="7343000" />
-      <workItem from="1644532059988" duration="5537000" />
+      <workItem from="1644532059988" duration="8771000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add HTTPTransport class scratch">
       <created>1644533524349</created>
