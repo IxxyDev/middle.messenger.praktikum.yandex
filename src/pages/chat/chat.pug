@@ -1,11 +1,13 @@
 extends ../../layouts/content
 include ../../mixins/chat
-include ../../mixins/form
+include ../../mixins/popup
 include ../../mixins/dropdown
 
 append head
   title Chat
   link(rel='stylesheet', href='/styles/chat.scss')
+  link(rel='stylesheet', href='/styles/form.scss')
+  link(rel='stylesheet', href='/styles/popup.scss')
 block content
   .chat-page
     .sidebar
@@ -16,7 +18,7 @@ block content
         .sidebar__search
           input.sidebar__search-input(type='text' placeholder='Search')
       ul.chats
-        each item in createArray(15)
+        each item in createArray(7)
           +chat({
             name: 'Albert Einstein',
             avatar: '../../../static/images/default-avatar.png',
@@ -25,8 +27,8 @@ block content
             newMessageCount: 10 * Math.random(),
             time: '12:00',
           })
-      .chat
-        header.chat__header
+    .chat
+      header.chat__header
         .chat__user-info
           img.chat__avatar(src='../../../static/images/default-avatar.png', alt='User avatar')
           p.chat__username Albert Einstein
@@ -35,22 +37,19 @@ block content
           .dropdown.dropdown--settings
             +dropdown('Add user')
             +dropdown('Remove user')
-        .chat__body
-          //ul.chat__messages
-          //  each message in messages
-          //    +message(message)
-        .chat__actions
-          button.chat__attach-button
-            span Some File Icon here
-          .dropdown.dropdown--attach
-            +dropdown('Photo or Video')
-            +dropdown('File')
-            +dropdown('Location')
-        form.chat__message(action='/')
-          input.chat__message-input(type='Text', placeholder='Your message', name='message')
-          button
-            span Some Send Message Icon here
-  +form('post', '#', [{
+      .chat__body
+        ul.chat__messages
+          //+message({ message: 'Lorem ipsum', time: '12:00', isUser: true })
+      .chat__actions
+        button.chat__attach-button
+        .dropdown.dropdown--attach
+          +dropdown('Photo or Video')
+          +dropdown('File')
+          +dropdown('Location')
+      form.chat__message(action='/')
+        input.chat__message-input(type='Text', placeholder='Your message', name='message')
+        button.chat__send-message-button Some Icon
+  +popup(false, 'post', '#', [{
       label: 'Login',
       placeholder: 'Login',
       required: true,

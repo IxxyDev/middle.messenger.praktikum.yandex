@@ -10,6 +10,7 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
+  overflow-x: hidden;
   -moz-transition: visibility 0.5s, opacity 0.5s linear;
   -webkit-transition: visibility 0.5s, opacity 0.5s linear;
   -o-transition: visibility 0.5s, opacity 0.5s linear;
@@ -25,15 +26,4 @@
   -o-transition: visibility 0s, opacity 0.5s linear;
   -ms-transition: visibility 0s, opacity 0.5s linear;
   transition: visibility 0s, opacity 0.5s linear;
-}
-
-
-.popup__content {
-  width: 430px;
-  max-height: 330px;
-  border-radius: 10px;
-  padding: 34px 36px;
-  box-sizing: border-box;
-  background-color: #fff;
-  position: relative;
 }
