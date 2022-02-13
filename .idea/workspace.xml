@@ -2,27 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eed2d66-8b61-4255-9bfe-54d58c22ece0" name="Changes" comment="feat: add HTTPTransport class scratch">
-      <change afterPath="$PROJECT_DIR$/src/pages/edit-password.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/edit-profile.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/popup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/chat.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Inter-Regular.d0352803.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Inter-SemiBold.6af564cd.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/error-page.45e217cb.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/error-page.45e217cb.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/layouts/content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/layouts/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mixins/errorPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mixins/form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/no-image.7ff10408.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/sign-in.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/pages/sign-up.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Block/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Block/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mixins/chat.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/chat.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mixins/popup.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/popup.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/chat.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/edit-profile.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/edit-profile.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/sign-in.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sign-in.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/popup.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/HTTPTransport.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/HTTPTransport.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +89,7 @@
       <workItem from="1643455465774" duration="598000" />
       <workItem from="1643473640810" duration="598000" />
       <workItem from="1644424982901" duration="7343000" />
-      <workItem from="1644532059988" duration="13689000" />
+      <workItem from="1644532059988" duration="16700000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add HTTPTransport class scratch">
       <created>1644533524349</created>
