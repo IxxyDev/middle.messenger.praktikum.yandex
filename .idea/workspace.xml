@@ -2,15 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eed2d66-8b61-4255-9bfe-54d58c22ece0" name="Changes" comment="feat: add HTTPTransport class scratch">
+      <change beforePath="$PROJECT_DIR$/.cache/18/174a30cf1429054f21055659aabbc6.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/18/174a30cf1429054f21055659aabbc6.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.cache/39/a4454ff7b6c36b2e20d34e8d2db913.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/39/a4454ff7b6c36b2e20d34e8d2db913.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/6b/8da5d70ccdfe9babe438d27f90fd48.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/6b/8da5d70ccdfe9babe438d27f90fd48.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/83/f31bc37afa498aac4db4ac75bc55c4.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/83/f31bc37afa498aac4db4ac75bc55c4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/94/638c7517f880cc892ce638a82917d5.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/94/638c7517f880cc892ce638a82917d5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/ad/b44a720a7086b63fe2b1ff8aad939b.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/ad/b44a720a7086b63fe2b1ff8aad939b.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/ad/f9dabe0b38f3beb73585f983842f9c.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/ad/f9dabe0b38f3beb73585f983842f9c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/b0/ccb337ccfc140b5cabeecc59266a9a.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/b0/ccb337ccfc140b5cabeecc59266a9a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/dc/b5255d70eb5decef8cb07bb927af51.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/dc/b5255d70eb5decef8cb07bb927af51.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/e4/13d0fa3b3dcd10705ceed81a210dad.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/e4/13d0fa3b3dcd10705ceed81a210dad.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mixins/dropdown.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/dropdown.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mixins/message.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/message.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/chat/chat.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/chat.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/chat/pug.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/pug.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/chat.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/chat.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mixins/form.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/form.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/edit-password.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/edit-password.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/edit-profile.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/edit-profile.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/sign-in.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sign-in.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/sign-up.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sign-up.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +96,7 @@
       <workItem from="1643455465774" duration="598000" />
       <workItem from="1643473640810" duration="598000" />
       <workItem from="1644424982901" duration="7343000" />
-      <workItem from="1644532059988" duration="26376000" />
+      <workItem from="1644532059988" duration="27365000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add HTTPTransport class scratch">
       <created>1644533524349</created>

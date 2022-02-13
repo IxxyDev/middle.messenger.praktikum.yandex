@@ -4,6 +4,8 @@ include ../mixins/popup
 append head
   title Profile
   link(rel="stylesheet", href="/styles/profile.scss")
+  link(rel="stylesheet", href="/styles/form.scss")
+  link(rel="stylesheet", href="/styles/popup.scss")
 block content
   .profile
     .profile__user
@@ -76,20 +78,8 @@ block content
         minlength: 6,
         autofocus: true,
         autocomplete: false,
-      }
-    ])
-  +popup(false, "post", '#', [
-    {
-      label: 'Repeat password',
-      placeholder: 'Repeat password',
-      required: true,
-      name: 'repeatPassword',
-      id: 'repeatPassword',
-      type: 'password',
-      maxlength: 30,
-      minlength: 6,
-      autofocus: true,
-      autocomplete: false,
-    },
-    'Save changes'
-  ])
+      },
+    ],
+      'Edit profile',
+      'Save changes'
+    )
