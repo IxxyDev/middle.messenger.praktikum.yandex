@@ -71,7 +71,7 @@ export default class HTTPTransport {
 
 			xhr.open(
 				method,
-				method === METHODS.GET && !!data ? `${url}${queryStringify(data)}` : url
+				method === METHODS.GET && data ? `${url}${queryStringify(data)}` : url
 			)
 
 			Object.keys(headers).forEach(key => {
