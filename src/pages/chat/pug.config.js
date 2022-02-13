@@ -6,7 +6,13 @@ module.exports = {
     messages: [
       {
         message: 'Lorem ipsum',
-        time: '12:00'
+        time: '12:00',
+        isUser: true
+      },
+      {
+        message: 'Lorem ipsum',
+        time: '12:00',
+        isUser: true
       },
       {
         message: 'Lorem ipsum',
@@ -18,11 +24,8 @@ module.exports = {
       },
       {
         message: 'Lorem ipsum',
-        time: '12:00'
-      },
-      {
-        message: 'Lorem ipsum',
-        time: '12:00'
+        time: '12:00',
+        isUser: true
       },
       {
         message: 'Lorem ipsum',
