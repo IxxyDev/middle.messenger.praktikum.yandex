@@ -8,7 +8,7 @@ interface EventArgs {
 interface EventEmitter {
 	on(evt: EventArgs): void,
 	off(evt: EventArgs): void,
-	emit(evt: EventArgs, ...args: any[]): void
+	emit(event: string, ...args: any[]): void
 }
 
 export default class EventBus implements EventEmitter {
@@ -36,11 +36,11 @@ export default class EventBus implements EventEmitter {
 		this.listeners[event] = this.listeners[event].filter(listener => listener !== callback)
 	}
 
-	emit(evt: EventArgs, ...args: any[]) {
-		if (!this.listeners[evt.event]) {
-			throw new Error(`No event: ${evt.event}`)
+	emit(event: string, ...args: any[]) {
+		if (!this.listeners[event]) {
+			throw new Error(`No event: ${event}`)
 		}
 
-		this.listeners[evt.event].forEach(listener => listener(...args))
+		this.listeners[event].forEach(listener => listener(...args))
 	}
 }
