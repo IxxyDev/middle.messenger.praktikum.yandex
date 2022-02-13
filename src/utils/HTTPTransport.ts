@@ -7,13 +7,14 @@ enum METHODS {
 
 type Option = {
   timeout?: number
-  data?: { [key: string]: string }
+  data?: { [key: string]: string } | any //не смог нормально определить тип
   method?: METHODS
   headers?: { [key: string]: string }
   withCredentials?: boolean
 }
 
 const queryStringify = (data: { [key: string]: string | number }) => {
+
   let queryString = '?';
   const entries = Object.entries(data)
 

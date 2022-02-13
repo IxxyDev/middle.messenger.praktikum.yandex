@@ -80,7 +80,7 @@ export default abstract class Block {
 		this.content = document.createElement('div')
 
 		if(this.meta.props?.classNames) {
-			for (const cn of this.meta.props?.classNames) {
+			for (const cn of this.meta.props.classNames) {
 				this.content.classList.add(cn);
 			}
 		}

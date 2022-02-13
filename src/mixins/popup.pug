@@ -1,7 +1,6 @@
 include ./form
 
-mixin(isOpened, method, action, inputs, submitButtonLabel, linkText)
+mixin popup(isOpened, method, action, inputs, submitButtonLabel, linkText)
   .popup(class=isOpened ? 'popup popup_is-opened': 'popup')
-    .popup__overlay
     .popup__content
       +form(method, action, inputs, submitButtonLabel, linkText)

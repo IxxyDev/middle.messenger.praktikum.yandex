@@ -4,7 +4,7 @@ include ../mixins/form
 
 append head
   title Chat
-  link(rel='stylesheet', href='/styles/chat.css')
+  link(rel='stylesheet', href='/styles/chat.scss')
 block content
   .chat-page
     .sidebar
@@ -14,11 +14,10 @@ block content
       .sidebar__search
         input.sidebar__search-input(type='text' placeholder='Search')
       ul.chats
-        each item in Array(15)
+        each item in Array(15).fill('')
           +chat({
             name: 'Albert Einstein',
             avatar: '../../static/images/default-avatar.png',
-            message: 'Lorem ipsum',
             newMessage: Math.random() > 0.5,
             newMessageCount: 10 * Math.random(),
             time: '12:00',
@@ -32,9 +31,10 @@ block content
           button.chat__settings-button
             span Some Icon here
         .chat__body
-          ul.chat__messages
-            each message in messages
-              +message(message)
+          //ul.chat__messages
+          //  each message in Array(15).fill({ message: 'Lorem ipsum', time: '12:00', isUser: true})
+          //    pre #{JSON.stringify(message)}
+          //    +message(message)
         .chat__actions
           button.chat__attach-button
             span Some File Icon here

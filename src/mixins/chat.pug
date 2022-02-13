@@ -1,10 +1,10 @@
 mixin chat(data)
-  li.chat-list__item(class=data.current ? 'chat-list__item--active' : '')
+  li.chat-list__item(class=data.current && 'chat-list__item--active')
     .chat-list__image-wrap
       img.chat-list__image(src=data.avatar)
     .chat-list__content
       strong.chat-list__name=data.name
-      span.chat-list__message=data.message
+      //span.chat-list__message=data.message
     .chat-list__info
       time.chat-list__time=data.time
       if (data.newMessage && data.newMessageCount)
