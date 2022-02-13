@@ -1,11 +1,11 @@
 mixin chat(data)
-  li.chat-list__item(class=data.current && 'chat-list__item--active')
-    .chat-list__image-wrap
-      img.chat-list__image(src=data.avatar)
-    .chat-list__content
-      strong.chat-list__name=data.name
-      //span.chat-list__message=data.message
-    .chat-list__info
-      time.chat-list__time=data.time
+  li.chats__item(class=data.current && 'chats__item--active')
+    .chats__user-wrapper
+      img.chats__image(src=data.avatar)
+      .chats__content
+        strong.chats__name=data.name
+        span.chats__message=data.message
+    .chats__info
+      time.chats__time=data.time
       if (data.newMessage && data.newMessageCount)
-        span.chat-list__message-count= data.newMessageCount
+        span.chats__message-count= data.newMessageCount

@@ -1,10 +1,7 @@
 mixin message(data)
-  if (data.type === `date` && data.date)
-    li.chat-content__message-date=data.date
-  if (data.type === `message`)
-    li.chat-content__message(class=data.isUser ? 'chat-content__message--user' : '')
-      p.chat-content__message-content=data.message
-      span.chat-content__message-time(class=data.isUser ? 'chat-content__message-time--user' : '')
-        if data.isUser
-          span.chat-content__message-time-icon.material-icons done
-          span.chat-content__message-time-value=data.time
+  li.chat-content__message-date=data.date
+  li.chat-content__message(class=data.isUser && 'chat-content__message--user')
+    p.chat-content__message-content=data.message
+    span.chat-content__message-time(class=data.isUser && 'chat-content__message-time--user')
+      if data.isUser
+        span.chat-content__message-time-value=data.time
