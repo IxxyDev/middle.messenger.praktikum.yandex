@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eed2d66-8b61-4255-9bfe-54d58c22ece0" name="Changes" comment="feat: add HTTPTransport class scratch">
-      <change afterPath="$PROJECT_DIR$/src/styles/chat.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/popup.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/chat/pug.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/09/d90abe78dc7d34411888295db2d30a.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/09/d90abe78dc7d34411888295db2d30a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Block/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Block/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.pug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mixins/chat.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/chat.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mixins/popup.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/popup.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/chat.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/edit-profile.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/edit-profile.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/sign-in.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/sign-in.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/popup.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/HTTPTransport.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/HTTPTransport.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mixins/dropdown.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/dropdown.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mixins/message.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/message.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/chat.pug" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/chat.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/chat.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/chat.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,10 +68,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/chats" />
+      <recent name="$PROJECT_DIR$/src/pages/chat" />
       <recent name="$PROJECT_DIR$/static/images" />
       <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/src/components/Block" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -89,7 +88,7 @@
       <workItem from="1643455465774" duration="598000" />
       <workItem from="1643473640810" duration="598000" />
       <workItem from="1644424982901" duration="7343000" />
-      <workItem from="1644532059988" duration="16700000" />
+      <workItem from="1644532059988" duration="20554000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add HTTPTransport class scratch">
       <created>1644533524349</created>

@@ -1,6 +1,7 @@
-extends ../layouts/content
-include ../mixins/chat
-include ../mixins/form
+extends ../../layouts/content
+include ../../mixins/chat
+include ../../mixins/form
+include ../../mixins/dropdown
 
 append head
   title Chat
@@ -8,16 +9,18 @@ append head
 block content
   .chat-page
     .sidebar
-      nav.sidebar__nav
-        a.sidebar__link(href='#') Profile
-        span.sidebar__arrow-icon >
-      .sidebar__search
-        input.sidebar__search-input(type='text' placeholder='Search')
+      .sidebar__heading
+        nav.sidebar__nav
+          a.sidebar__link(href='#') Profile
+          span.sidebar__arrow-icon >
+        .sidebar__search
+          input.sidebar__search-input(type='text' placeholder='Search')
       ul.chats
-        each item in Array(15).fill('')
+        each item in createArray(15)
           +chat({
             name: 'Albert Einstein',
-            avatar: '../../static/images/default-avatar.png',
+            avatar: '../../../static/images/default-avatar.png',
+            message: 'Lorem ipsum',
             newMessage: Math.random() > 0.5,
             newMessageCount: 10 * Math.random(),
             time: '12:00',
@@ -25,20 +28,24 @@ block content
       .chat
         header.chat__header
         .chat__user-info
-          img.chat__avatar(src='../../static/images/default-avatar.png', alt='User avatar')
+          img.chat__avatar(src='../../../static/images/default-avatar.png', alt='User avatar')
           p.chat__username Albert Einstein
         .chat__settings
           button.chat__settings-button
-            span Some Icon here
+          .dropdown.dropdown--settings
+            +dropdown('Add user')
+            +dropdown('Remove user')
         .chat__body
           //ul.chat__messages
-          //  each message in Array(15).fill({ message: 'Lorem ipsum', time: '12:00', isUser: true})
-          //    pre #{JSON.stringify(message)}
+          //  each message in messages
           //    +message(message)
         .chat__actions
           button.chat__attach-button
             span Some File Icon here
-          //dropdown here
+          .dropdown.dropdown--attach
+            +dropdown('Photo or Video')
+            +dropdown('File')
+            +dropdown('Location')
         form.chat__message(action='/')
           input.chat__message-input(type='Text', placeholder='Your message', name='message')
           button
