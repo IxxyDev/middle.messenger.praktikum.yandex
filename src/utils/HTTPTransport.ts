@@ -7,13 +7,13 @@ enum METHODS {
 
 type Option = {
   timeout?: number
-  data?: { [key: string]: string } | any //не смог нормально определить тип
+  data?: Record<string, string> | any
   method?: METHODS
-  headers?: { [key: string]: string }
+  headers?: Record<string, string>
   withCredentials?: boolean
 }
 
-const queryStringify = (data: { [key: string]: string | number }) => {
+const queryStringify = (data: Record<string, string|number>) => {
 
   let queryString = '?';
   const entries = Object.entries(data)
@@ -28,9 +28,13 @@ const queryStringify = (data: { [key: string]: string | number }) => {
 }
 
 export default class HTTPTransport {
+	concatURL(data: Record<string, string> | any, url: string) {
+		return data ? `${url}${queryStringify(data)}` : url
+	}
+
 	get = (url: string, options: Option = {}): Promise<XMLHttpRequest> => {
 		return this.request(
-			url,
+			this.concatURL(options.data, url),
 			{ ...options, method: METHODS.GET },
 			options.timeout
 		)
@@ -38,7 +42,7 @@ export default class HTTPTransport {
 
 	post = (url: string, options: Option = {}): Promise<XMLHttpRequest> => {
 		return this.request(
-			url,
+			this.concatURL(options.data, url),
 			{ ...options, method: METHODS.POST },
 			options.timeout
 		)
@@ -46,7 +50,7 @@ export default class HTTPTransport {
 
 	put = (url: string, options: Option = {}): Promise<XMLHttpRequest> => {
 		return this.request(
-			url,
+			this.concatURL(options.data, url),
 			{ ...options, method: METHODS.PUT },
 			options.timeout
 		)
@@ -54,7 +58,7 @@ export default class HTTPTransport {
 
 	delete = (url: string, options: Option = {}): Promise<XMLHttpRequest> => {
 		return this.request(
-			url,
+			this.concatURL(options.data, url),
 			{ ...options, method: METHODS.DELETE },
 			options.timeout
 		)
@@ -74,19 +78,22 @@ export default class HTTPTransport {
 				method,
 				method === METHODS.GET && data ? `${url}${queryStringify(data)}` : url
 			)
+			xhr.setRequestHeader('Content-type', 'text-plain');
 
 			Object.keys(headers).forEach(key => {
 				xhr.setRequestHeader(key, headers[key])
 			})
 
-			xhr.onload = () => resolve(xhr)
+			xhr.onload = () => {
+				xhr.status === 200 ? resolve(xhr) : reject(xhr)
+			}
 
 			xhr.onabort = reject
 			xhr.onerror = reject
 			xhr.timeout = timeout
 			xhr.ontimeout = reject
 
-			if (method === METHODS.GET || !data) {
+			if (!data) {
 				xhr.send()
 			} else {
 				xhr.send(data)
