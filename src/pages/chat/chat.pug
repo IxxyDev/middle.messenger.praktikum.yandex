@@ -47,7 +47,7 @@ block content
           +dropdown('File')
           +dropdown('Location')
       form.chat__message(action='/')
-        input.chat__message-input(type='Text', placeholder='Your message', name='message')
+        input.chat__message-input(type='Text', placeholder='Your message', name='message', required=true)
         button.chat__send-message-button Some Icon
   +popup(false, 'post', '#', [{
       label: 'Login',
@@ -56,10 +56,11 @@ block content
       name: 'login',
       id: 'login',
       type: 'text',
-      maxlength: 30,
+      maxlength: 20,
       minlength: 3,
       autofocus: true,
       autocomplete: true,
+      regexp: /^(?![0-9_-]+$)[A-Za-z\d_-]+$/
     }],
     'Add user',
   )
