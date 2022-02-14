@@ -28,11 +28,11 @@ block content
         name: 'login',
         id: 'login',
         type: 'text',
-        maxlength: 30,
+        maxlength: 20,
         minlength: 3,
         autofocus: true,
         autocomplete: true,
-        regexp: ''
+        regexp: /^(?![0-9_-]+$)[A-Za-z\\d_-]+$/
       },
       {
         label: 'Name',
@@ -45,6 +45,7 @@ block content
         minlength: 2,
         autofocus: true,
         autocomplete: false,
+        regexp: /^[A-ZА-Я][A-Za-zА-Яа-я-]+$/
       },
       {
         label: 'Surname',
@@ -57,6 +58,7 @@ block content
         minlength: 2,
         autofocus: true,
         autocomplete: true,
+        regexp: /^[A-ZА-Я][A-Za-zА-Яа-я-]+$/
       },
       {
         label: 'Phone',
@@ -67,6 +69,20 @@ block content
         type: 'tel',
         autofocus: true,
         autocomplete: true,
+        regexp: /^[0-9\\-\\+]{9,15}$/,
+      },
+      {
+        label: 'Password',
+        placeholder: 'Password',
+        required: true,
+        name: 'password',
+        id: 'password',
+        type: 'password',
+        maxlength: 30,
+        minlength: 6,
+        autofocus: true,
+        autocomplete: false,
+        regexp: /[A-Z]+[0-9]+[@#\\$&]*/
       },
       {
         label: 'Repeat password',
@@ -79,7 +95,8 @@ block content
         minlength: 6,
         autofocus: true,
         autocomplete: false,
-      },
+        regexp: '[A-Z]+[0-9]+[@#\\$&]*'
+      }
     ],
       'Edit profile',
       'Save changes'
