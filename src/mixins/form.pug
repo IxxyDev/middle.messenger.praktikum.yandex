@@ -14,7 +14,8 @@ mixin form(method, action, inputs, title, submitButtonLabel, linkText)
           maxlength=input.maxlength 
           minlength=input.minlength
           autofocus=input.autofocus 
-          autocomplete = input.autocomplete
+          autocomplete=input.autocomplete
+          pattern=input.regexp
         )
     button.form__button(type="submit")=submitButtonLabel
     if linkText
