@@ -1,6 +1,6 @@
 {
-    "extends": "./.eslintrc",
-    "parserOptions": {
-        "sourceType": "module"
-    }
+  "extends": "./.eslintrc",
+  "parserOptions": {
+    "sourceType": "module"
+  }
 }
