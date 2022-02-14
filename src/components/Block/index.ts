@@ -9,19 +9,11 @@ enum EVENTS {
 	FLOW_RENDER = "flow: render",
 }
 
-export type Props = {
-	classNames?: string[],
-	events?: { [key: string]: (e: Event, ...args: any[]) => void},
-	[key: string]: unknown
-}
-
-export type Settings = {
-	withInternalId?: boolean;
-}
+export type Props = Record<string, any>
 
 export type Meta = {
+	tagName: string,
 	props: Props,
-	withInternalId?: boolean,
 }
 
 export default abstract class Block {
@@ -33,17 +25,14 @@ export default abstract class Block {
 	props: Props
 	meta: Meta
 
-	protected constructor(props: Props = {}, settings: Settings = {}) {
-		this.meta = {
-			props,
-			withInternalId: settings.withInternalId
-		}
+	protected constructor(tagName: string = 'div', propsAndChildren: Props = {}) {
+		const { children, props } = this.getChildren(propsAndChildren)
+		this.meta = { tagName, props }
 
+		this.id = uuidv4()
+		const propsWithId: Record<any, any> = Object.assign(props, {id: this.id});
 		const eventBus = new EventBus()
-		if (this.meta.withInternalId) {
-			this.id = uuidv4()
-		}
-		this.props = this.makePropsProxy({ ...props })
+		this.props = this.makePropsProxy(propsWithId)
 		this.eventBus = () => eventBus
 		this.registerEvents(eventBus)
 		eventBus.emit(EVENTS.INIT)
@@ -67,6 +56,21 @@ export default abstract class Block {
 				throw new Error("Failed request")
 			}
 		})
+	}
+
+	private getChildren(propsAndChildren: Props) {
+		const props: Record<string, Block> = {}
+		const children: Record<string, Block> = {}
+
+		Object.entries(propsAndChildren).forEach(([key, value]) => {
+			if (value instanceof Block) {
+				children[key] = value;
+			} else {
+				props[key] = value;
+			}
+		})
+
+		return { children, props };
 	}
 
 	private registerEvents(eventBus: EventBus) {
@@ -146,7 +150,6 @@ export default abstract class Block {
 			}
 		}
 	}
-
 
 	getElement() {
 		return this.element
