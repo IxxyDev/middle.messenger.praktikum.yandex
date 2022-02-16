@@ -15,6 +15,7 @@ block content
       minlength: 3,
       autofocus: true,
       autocomplete: true,
+      regexp: /^[A-ZА-Я][A-Za-zА-Яа-я-]+$/
     },
     {
       label: 'Password',
@@ -27,7 +28,9 @@ block content
       minlength: 6,
       autofocus: true,
       autocomplete: false,
+      regexp: /[A-Z]+[0-9]+[@#\$&]*/
     }],
+    'Sign In',
     'Sign In',
     'No account? Sign up'
   )

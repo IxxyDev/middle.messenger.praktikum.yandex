@@ -1,0 +1,6 @@
+include ./form
+
+mixin popup(isOpened, method, action, inputs, submitButtonLabel, linkText)
+  .popup(class=isOpened ? 'popup popup_is-opened': 'popup')
+    .popup__content
+      +form(method, action, inputs, submitButtonLabel, linkText)
