@@ -1,0 +1,7 @@
+mixin message(...messages)
+  each message in messages
+    li.chat-content__message(class=message.isUser && 'chat-content__message--user')
+      p.chat-content__message-content=message.message
+      span.chat-content__message-time(class=message.isUser && 'chat-content__message-time--user')
+        if message.isUser
+          span.chat-content__message-time-value=message.time

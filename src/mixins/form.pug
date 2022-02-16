@@ -1,7 +1,7 @@
-mixin form(method, action, inputs, submitButtonLabel, linkText)
+mixin form(method, action, inputs, title, submitButtonLabel, linkText)
   form.form(method=method, action=action)
     if inputs
-    h1.form__title=submitButtonLabel
+    h1.form__title=title
     fieldset.form__fieldset
       each input in inputs
         label.form__label(for=input.id)=input.label
@@ -14,7 +14,9 @@ mixin form(method, action, inputs, submitButtonLabel, linkText)
           maxlength=input.maxlength 
           minlength=input.minlength
           autofocus=input.autofocus 
-          autocomplete = input.autocomplete
+          autocomplete=input.autocomplete
+          pattern=input.regexp
         )
     button.form__button(type="submit")=submitButtonLabel
+    if linkText
     a.form__link(href='/')=linkText

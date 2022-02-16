@@ -1,0 +1,103 @@
+extends ../layouts/content
+include ../mixins/form
+include ../mixins/popup
+append head
+  title Profile
+  link(rel="stylesheet", href="/styles/profile.scss")
+  link(rel="stylesheet", href="/styles/form.scss")
+  link(rel="stylesheet", href="/styles/popup.scss")
+block content
+  .profile
+    .profile__user
+      img.profile__image(src="../../static/images/no-image.jpeg", alt="User avatar")
+    +form('post', '#', [
+      {
+        label: 'Email',
+        placeholder: 'Email',
+        required: true,
+        name: 'email',
+        id: 'email',
+        type: 'email',
+        autofocus: true,
+        autocomplete: true,
+      },
+      {
+        label: 'Login',
+        placeholder: 'Login',
+        required: true,
+        name: 'login',
+        id: 'login',
+        type: 'text',
+        maxlength: 20,
+        minlength: 3,
+        autofocus: true,
+        autocomplete: true,
+        regexp: /^(?![0-9_-]+$)[A-Za-z\\d_-]+$/
+      },
+      {
+        label: 'Name',
+        placeholder: 'Name',
+        required: true,
+        name: 'name',
+        id: 'name',
+        type: 'text',
+        maxlength: 50,
+        minlength: 2,
+        autofocus: true,
+        autocomplete: false,
+        regexp: /^[A-ZА-Я][A-Za-zА-Яа-я-]+$/
+      },
+      {
+        label: 'Surname',
+        placeholder: 'Surname',
+        required: true,
+        name: 'surname',
+        id: 'surname',
+        type: 'text',
+        maxlength: 50,
+        minlength: 2,
+        autofocus: true,
+        autocomplete: true,
+        regexp: /^[A-ZА-Я][A-Za-zА-Яа-я-]+$/
+      },
+      {
+        label: 'Phone',
+        placeholder: 'Phone',
+        required: true,
+        name: 'phone',
+        id: 'phone',
+        type: 'tel',
+        autofocus: true,
+        autocomplete: true,
+        regexp: /^[0-9\\-\\+]{9,15}$/,
+      },
+      {
+        label: 'Password',
+        placeholder: 'Password',
+        required: true,
+        name: 'password',
+        id: 'password',
+        type: 'password',
+        maxlength: 30,
+        minlength: 6,
+        autofocus: true,
+        autocomplete: false,
+        regexp: /[A-Z]+[0-9]+[@#\\$&]*/
+      },
+      {
+        label: 'Repeat password',
+        placeholder: 'Repeat password',
+        required: true,
+        name: 'repeatPassword',
+        id: 'repeatPassword',
+        type: 'password',
+        maxlength: 30,
+        minlength: 6,
+        autofocus: true,
+        autocomplete: false,
+        regexp: '[A-Z]+[0-9]+[@#\\$&]*'
+      }
+    ],
+      'Edit profile',
+      'Save changes'
+    )
