@@ -15,5 +15,5 @@ No frameworks, pure JS web messenger. Your useless chats will load faster!
 
 [Макет](https://www.figma.com/file/JzoXo8NR1FWPsCydl123Wt/Messenger?node-id=1%3A26) (пока стоковый)
 
-[Netlify](https://deploy-preview-1--condescending-franklin-13fc1c.netlify.app/)
+[Netlify](https://deploy-preview-3--condescending-franklin-13fc1c.netlify.app/)
 
