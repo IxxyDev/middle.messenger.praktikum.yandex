@@ -20,7 +20,7 @@ export type Meta = {
 export default abstract class Block<T extends Props> {
 	private readonly id: string;
 	private eventBus: () => EventBus
-	private element: HTMLElement
+	public element: HTMLElement
 	private content: HTMLDivElement
 
 	props: Props
