@@ -14,9 +14,10 @@ export type Props = Record<string, any>
 export type Meta = {
 	tagName: string,
 	props: Props,
+	withInternalId?: boolean,
 }
 
-export default abstract class Block {
+export default abstract class Block<T extends Props> {
 	private readonly id: string;
 	private eventBus: () => EventBus
 	private element: HTMLElement
@@ -38,7 +39,7 @@ export default abstract class Block {
 		eventBus.emit(EVENTS.INIT)
 	}
 
-	private makePropsProxy(props: Props) {
+	private makePropsProxy(props: T) {
 		return new Proxy(props, {
 			get: (target, prop: string): boolean => {
 				const value = target[prop]
@@ -59,8 +60,8 @@ export default abstract class Block {
 	}
 
 	private getChildren(propsAndChildren: Props) {
-		const props: Record<string, Block> = {}
-		const children: Record<string, Block> = {}
+		const props: Record<string, Block<Props>> = {}
+		const children: Record<string, Block<Props>> = {}
 
 		Object.entries(propsAndChildren).forEach(([key, value]) => {
 			if (value instanceof Block) {
@@ -100,7 +101,7 @@ export default abstract class Block {
 		this.eventBus().emit(EVENTS.FLOW_RENDER)
 	}
 
-	private componentDidUpdate(prevProps: Props, newProps: Props) {
+	private componentDidUpdate(prevProps: T, newProps: T) {
 		if (prevProps !== newProps) {
 			this.eventBus().emit(EVENTS.FLOW_RENDER)
 		}
