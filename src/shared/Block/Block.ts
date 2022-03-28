@@ -1,13 +1,13 @@
 import {EventBus} from '../EventBus'
-import {ElementEvents, Props} from "../global";
+import {ElementEvents, Props, ElementEvent} from "../global";
 import {EventsTypes, Meta, StoreEvent} from './types';
 import store from '../store/store'
 
 export class Block<T> {
   props: Props;
   protected readonly meta: Meta;
-  private element: HTMLElement;
-  private storeEvents: StoreEvent[];
+  private element: HTMLElement | undefined;
+  private storeEvents: StoreEvent[] | undefined;
   protected eventBus: EventBus;
 
   constructor(tagName = 'div', containerClassName: string, props = {}, events: ElementEvents = {}, rootId?: string) {
@@ -45,12 +45,12 @@ export class Block<T> {
     Object.assign(this.props, newProps)
   }
 
-  render(): DocumentFragment | void {
+  render(): DocumentFragment {
     console.log('Render is not here yet!')
   }
 
   subscribe(event: string, cb: (path: string) => void): void {
-    store.on(event, cb, this)
+    store.on(event, this, cb)
     this.storeEvents.push({event, cb})
   }
 
@@ -75,17 +75,17 @@ export class Block<T> {
   }
 
   private registerEventBusEvents(eventBus: EventBus) {
-    eventBus.on(EventsTypes.INIT, this.init, this);
-    eventBus.on(EventsTypes.FLOW_CDM, this.componentDidMount, this);
-    eventBus.on(EventsTypes.FLOW_CDU, this.componentDidUpdate, this);
-    eventBus.on(EventsTypes.FLOW_RENDER, this.render, this);
+    eventBus.on(EventsTypes.INIT, this, this.init)
+    eventBus.on(EventsTypes.FLOW_CDM, this, this.componentDidMount)
+    eventBus.on(EventsTypes.FLOW_CDU, this, this.componentDidUpdate)
+    eventBus.on(EventsTypes.FLOW_RENDER, this, this.render)
   }
 
   private removeEventBusEvents() {
-    this.eventBus.off(EventsTypes.INIT, this.init, this);
-    this.eventBus.off(EventsTypes.FLOW_CDM, this.componentDidMount, this);
-    this.eventBus.off(EventsTypes.FLOW_CDU, this.componentDidUpdate, this);
-    this.eventBus.off(EventsTypes.FLOW_RENDER, this.render, this);
+    this.eventBus.off(EventsTypes.INIT, this, this.init);
+    this.eventBus.off(EventsTypes.FLOW_CDM, this, this.componentDidMount);
+    this.eventBus.off(EventsTypes.FLOW_CDU, this, this.componentDidUpdate);
+    this.eventBus.off(EventsTypes.FLOW_RENDER, this, this.render);
   }
 
   private createResources() {
@@ -104,7 +104,7 @@ export class Block<T> {
   }
 
   private componentWillUnmount() {
-    this.removeElements()
+    this.removeAllEvents()
     const root = document.getElementById(this.meta.rootId || '')
 
     if (root) {
@@ -132,28 +132,28 @@ export class Block<T> {
   }
 
   private addEvents() {
-    Object.entries(this.meta.events).forEach(([event, eventArray = []]) => {
-      eventArray.forEach(({id, f}) => {
-        const nodeElement = this.element.querySelector(`#${id}`)
+    Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
+      eventArray.forEach((event: ElementEvent)=> {
+        const nodeElement = this.element.querySelector(`#${event.id}`)
         if (!nodeElement) return
 
-        nodeElement.addEventListener(event, f)
+        nodeElement.addEventListener(eventName, event.fn)
       })
     })
   }
 
   private removeEvents() {
-    Object.entries(this.meta.events).forEach(([event, eventArray = []]) => {
-      eventArray.forEach(({id, f}) => {
-        const nodeElement = this.element.querySelector(`#${id}`)
-        nodeElement && nodeElement.addEventListener(event, f)
+    Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
+      eventArray.forEach((event: ElementEvent) => {
+        const nodeElement = this.element.querySelector(`#${event.id}`)
+        nodeElement && nodeElement.addEventListener(eventName, event.fn)
       })
     })
   }
 
   private removeStoreEvents() {
     this.storeEvents.forEach(({event, cb}) => {
-      store.off(event, cb, this);
+      store.off(event, this, cb);
     });
   }
 
@@ -163,20 +163,20 @@ export class Block<T> {
     this.removeStoreEvents();
   }
 
-  private makePropsProxy(props: Props) {
+  private makePropsProxy(props: Props): Props {
     const propsFromCustomMethod = this.makePropsProxy(props)
 
     if (propsFromCustomMethod) return propsFromCustomMethod
 
     return new Proxy<Props>(props, {
-      get: (target: Props, prop): unknown => {
+      get: (target: Props, prop: string): unknown => {
         const value = target[prop] as unknown
 
         return typeof value === 'function' ? value.bind(target) : value
       },
       set: (
         target: Props,
-        prop,
+        prop: string,
         value: string | Record<string, unknown>
       ): boolean => {
         const targetCopy = cloneDeep(target)
@@ -186,7 +186,7 @@ export class Block<T> {
 
         return true
       },
-      deleteProperty(target: Props, prop): boolean {
+      deleteProperty(target: Props, prop: string): boolean {
         delete target[prop]
         return true
       }
