@@ -1,4 +1,4 @@
-import {Props, ElementEvents} from '../types'
+import {Props, ElementEvents} from '../global'
 
 export type Meta = {
   tagName: string

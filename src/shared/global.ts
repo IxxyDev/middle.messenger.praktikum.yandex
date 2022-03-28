@@ -1,4 +1,4 @@
-type ElementEvent = {
+export type ElementEvent = {
   id: string
   fn: (event: Event) => void
 }
