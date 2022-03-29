@@ -1,7 +1,11 @@
 import {Block} from "../../shared/Block/Block"
 import {ElementEvents} from "../../shared/global"
+import {compile} from '../../shared/utils/compileTemplate'
+import {router} from '../../routes'
+
 import templatePug from './404.pug'
 import '404.scss'
+import {Page404Props} from "./interfaces"
 
 const page404Events: ElementEvents = {
   click: [
@@ -27,6 +31,6 @@ export class Page404 extends Block<Page404Props> {
   }
 
   render() {
-    return compileTemplate(templatePug, this.props, '', this.meta.events)
+    return compile(templatePug, this.props, '', this.meta.events)
   }
 }
