@@ -1,13 +1,12 @@
 import {Block} from "../Block/Block";
 import {REGISTERED_COMPONENTS} from "../registered-components";
 import {ElementEvents, Props} from "../global";
-import {isArray} from "../../utils";
 import {set} from "./set-values-to-object";
 import {getEventName} from "./get-event-name";
 import {getPathFromArray} from "./get-path-from-array";
 import {componentsState, ComponentState} from "../components-state";
 
-export function compileTemplateToElement(
+export function compile(
   templatePugFn: (locals: Props) => string,
   props: Props,
   pageEventName: string,
@@ -44,7 +43,7 @@ export function compileTemplateToElement(
 
         const path = getPathFromArray([pageEventName, dataName]);
 
-        if (isArray(data)) {
+        if (Array.isArray(data)) {
           const childComponents = Object.values(data)
             .map((value: Props) => {
               const component = getComponent(componentName, pageEventName, dataName, value, events);

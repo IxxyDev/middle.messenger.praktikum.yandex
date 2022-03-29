@@ -17,6 +17,7 @@ export class Router {
     this.history = window.history
     this.query = query
     this.currentRoute = null
+    this.fallBackPathname = ''
   }
 
   use(pathname: string, block: BlockHeir) {
