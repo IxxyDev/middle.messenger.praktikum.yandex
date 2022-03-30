@@ -3,7 +3,7 @@ export type ElementEvent = {
   fn: (event: Event) => void
 }
 
-type Indexed<T = unknown> = {
+export type Indexed<T = unknown> = {
   [key in string]: T
 }
 
