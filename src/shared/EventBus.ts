@@ -1,7 +1,7 @@
 type Function = (...args: any[]) => any | void;
 
 export class EventBus {
-  private listeners: Record<string, {subscriber: unknown, cb: Function}[]>
+  private readonly listeners: Record<string, {subscriber: unknown, cb: Function}[]>
 
   constructor() {
     this.listeners = {}

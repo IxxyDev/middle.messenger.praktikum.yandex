@@ -2,8 +2,8 @@ import {Block} from "../Block/Block"
 import {BlockHeir, RouteProps } from "./types"
 
 export class Route {
-  private pathname: string
-  private elementView: BlockHeir
+  private readonly pathname: string
+  private readonly elementView: BlockHeir
   private block: InstanceType<typeof Block> | null
   private props: RouteProps
 

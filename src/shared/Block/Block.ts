@@ -51,7 +51,7 @@ export class Block<T> {
 
   subscribe(event: string, cb: (path: string) => void): void {
     store.on(event, this, cb)
-    this.storeEvents.push({event, cb})
+    this.storeEvents?.push({event, cb})
   }
 
   getContent(): HTMLElement {
@@ -93,9 +93,9 @@ export class Block<T> {
   }
 
   private addAttributes() {
-    this.element.setAttribute('component', this.constructor.name)
+    this.element?.setAttribute('component', this.constructor.name)
 
-    this.meta.containerClassName && this.element.classList.add(this.meta.containerClassName)
+    this.meta.containerClassName && this.element?.classList.add(this.meta.containerClassName)
   }
 
   private _componentDidMount() {
@@ -123,7 +123,7 @@ export class Block<T> {
   private _render() {
     this.removeEvents();
     this.element.innerHTML = '';
-    this.element.appendChild(this.render());
+    this.element?.appendChild(this.render());
     this.addEvents();
   }
 
@@ -134,7 +134,7 @@ export class Block<T> {
   private addEvents() {
     Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
       eventArray.forEach((event: ElementEvent)=> {
-        const nodeElement = this.element.querySelector(`#${event.id}`)
+        const nodeElement = this.element?.querySelector(`#${event.id}`)
         if (!nodeElement) return
 
         nodeElement.addEventListener(eventName, event.fn)
@@ -145,14 +145,14 @@ export class Block<T> {
   private removeEvents() {
     Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
       eventArray.forEach((event: ElementEvent) => {
-        const nodeElement = this.element.querySelector(`#${event.id}`)
+        const nodeElement = this.element?.querySelector(`#${event.id}`)
         nodeElement && nodeElement.addEventListener(eventName, event.fn)
       })
     })
   }
 
   private removeStoreEvents() {
-    this.storeEvents.forEach(({event, cb}) => {
+    this.storeEvents?.forEach(({event, cb}) => {
       store.off(event, this, cb);
     });
   }
