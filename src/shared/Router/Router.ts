@@ -3,8 +3,8 @@ import {BlockHeir} from "./types"
 
 export class Router {
   private static instance: Router
-  private query: string
-  private currentRoute: Route | null
+  private readonly query: string
+  private readonly currentRoute: Route | null
   private routes: Route[]
   private fallBackPathname: string
   private history: History

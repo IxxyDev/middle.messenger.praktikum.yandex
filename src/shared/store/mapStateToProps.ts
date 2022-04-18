@@ -1,6 +1,5 @@
 import store from './store'
 import {State} from './types'
-import {Indexed} from '../global'
 
 type PageNames = 'page404' | 'page500' | 'chat' | 'signIn' | 'signUp' | 'settings'
 

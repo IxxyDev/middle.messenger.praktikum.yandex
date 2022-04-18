@@ -1,4 +1,4 @@
-import {Page404Props} from '../404/interfaces'
+import {Page404Props} from './interfaces'
 
 export const page404State: Page404Props = {
   title: '404',
