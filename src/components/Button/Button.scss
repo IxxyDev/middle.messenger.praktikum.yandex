@@ -1,0 +1,16 @@
+.button {
+	width: 280px;
+	color: white;
+	height: 37px;
+	background-color: #3369f3;
+	border-radius: 8px;
+	text-align: center;
+}
+
+.button:disabled {
+	opacity: .2;
+}
+
+.button:hover {
+	opacity: .7;
+}
