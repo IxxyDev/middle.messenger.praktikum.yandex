@@ -10,7 +10,6 @@ export class Router {
   private history: History
 
   constructor(query: string) {
-    Router.instance && Router.instance
     Router.instance = this
 
     this.routes = []
