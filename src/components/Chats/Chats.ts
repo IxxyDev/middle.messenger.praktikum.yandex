@@ -1,10 +1,10 @@
-import {MessagesProps} from "./interfaces";
 import {ElementEvents} from "../../shared/global";
 import {Block} from "../../shared/Block/Block";
 import {mapStateToProps} from "../../shared/store/mapStateToProps";
 import {compile} from "../../shared/utils/compileTemplate";
 
-import template from './Messages.pug';
+import template from './Chats.pug';
+import {ChatsProps} from "./interfaces";
 
 
 const scrollToBottom = (): void => {
@@ -13,8 +13,9 @@ const scrollToBottom = (): void => {
   if (!chatsContainer) return
   chatsContainer.scrollTop = chatsContainer.scrollHeight
 }
-export class Messages extends Block<MessagesProps> {
-  constructor(props: MessagesProps, event: string, events?: ElementEvents) {
+
+export class Chats extends Block<ChatsProps> {
+  constructor(props: ChatsProps, event: string, events?: ElementEvents) {
     super('div', 'messages', props, events);
 
     this.subscribe(event, mapStateToProps)

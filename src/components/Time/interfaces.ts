@@ -1,8 +1,8 @@
 import {Props} from "../../shared/global";
 
 export enum TimeType {
-  Main = 'mainTime',
-  Card = 'cardTime',
+  Chat = 'chat',
+  Message = 'message',
 }
 
 export interface TimeProps extends Props {
@@ -11,6 +11,6 @@ export interface TimeProps extends Props {
 }
 
 export interface ParsedTimeProps extends Props {
-  time: TimeType,
+  type: TimeType,
   date: string
 }

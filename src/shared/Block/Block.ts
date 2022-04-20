@@ -20,7 +20,7 @@ export class Block<T> {
       rootId
     }
 
-    this.props = this.makePropsProxy(props)
+    this.props = this._makePropsProxy(props)
     this.registerEventBusEvents(this.eventBus)
     this.eventBus.emit(EventsTypes.FLOW_CDM)
   }
@@ -52,6 +52,10 @@ export class Block<T> {
   subscribe(event: string, cb: (path: string) => void): void {
     store.on(event, this, cb)
     this.storeEvents?.push({event, cb})
+  }
+
+  makePropsProxy(props: Props): Props | null {
+    return null
   }
 
   getContent(): HTMLElement {
@@ -163,7 +167,7 @@ export class Block<T> {
     this.removeStoreEvents();
   }
 
-  private makePropsProxy(props: Props): Props {
+  private _makePropsProxy(props: Props): Props {
     const propsFromCustomMethod = this.makePropsProxy(props)
 
     if (propsFromCustomMethod) return propsFromCustomMethod
