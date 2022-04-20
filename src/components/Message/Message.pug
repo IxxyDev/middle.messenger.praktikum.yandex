@@ -1,12 +1,6 @@
-section.message
-  Avatar.message__avatar(data='avatar')
-  .message__text
-    h4.message__contact-name=contactName
-    if me
-     p.message__preview <b>You</b>: #{text}
-    else
-      p.message__preview You: #{text}
-  .message__info
-    if time
-      Time.message__time=time
-      .messages__count=newMessagesCount
+div(class=`message ${isMe ? 'message_type_mine' : ''}`)
+  if isMe
+   .message__status-icon
+  p.message__text=text
+  if time
+    Time.message__time(data='time')
