@@ -1,0 +1,15 @@
+aside.sidebar
+  SearchPanel(data='searchPanel')
+  Chats(data='chats')
+main.main
+  TopPanel.top-panel(data='chat')
+  if isActiveChat
+    if time
+      Time(data='time')
+    Messages(data='messages')
+    SendMessagePanel(data='sendMessage')
+  else
+    h3.main__no-chat-text='Create or select existing chat to start wasting your time'
+
+AddUserPopup(data='addUserPopup')
+DeleteUserPopup(data='deleteUserPopup')
