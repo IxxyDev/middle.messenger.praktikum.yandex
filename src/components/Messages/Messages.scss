@@ -1,25 +1,9 @@
-.message {
+.messages {
 	display: flex;
-	background-color: #f8f8f8;
-	justify-content: space-between;
-	align-items: center;
-	border-radius: 5px;
-	max-width: 402px;
-	padding: 11px;
-
-	&__type_mine {
-		background-color: #e4edfd;
-	}
-
-	&__status-icon {
-		width: 10px;
-		height: 4px;
-		background-image: url('../../../static/assets/icons/message-ok.svg');
-	}
-
-	&__text {
-		font-size: 12px;
-		line-height: 1.25;
-		text-align: right;
-	}
+	flex-direction: column;
+	justify-content: flex-end;
+	flex: 1;
+	border-bottom: 1px solid #999999;
+	border-top: 1px solid #999999;
+	padding: 30px 20px;
 }
