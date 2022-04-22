@@ -2,7 +2,6 @@ import {EventBus} from '../EventBus'
 import {State} from "../global";
 import {INITIAL_STATE} from "./initialState/initialState";
 
-
 class Store extends EventBus {
   private state: State = INITIAL_STATE;
 
