@@ -1,4 +1,4 @@
-import {FieldName, FormValidation, Invalid, ValidItem} from "./interfaces";
+import {InputName, FormValidation, Invalid, ValidItem} from "./interfaces";
 
 export class HandleForm {
   private readonly formValidation: FormValidation
