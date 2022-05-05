@@ -10,7 +10,7 @@ import { InputName } from "../../services/form/interfaces";
 import { ChangeProfileController } from "../../controllers/profile/changeProfile";
 
 class SettingsService extends HandleError {
-  public settingsEveents: ElementEvents = {
+  public settingsEvents: ElementEvents = {
     change: [
       {
         id: 'changeAvatarPopup',
@@ -260,7 +260,7 @@ class SettingsService extends HandleError {
         fn: e => {
           e.preventDefault();
           const form = new FormData();
-          const avatarBlobImg = store.getState().settingsPage.changeAvatar.blobImgSrc;
+          const avatarBlobImg = store.getState().settingsPage.changeAvatarPopup.blobImgSrc;
           form.append('avatar', avatarBlobImg, 'my-avatar.png');
           ChangeProfileController.changeProfile(form);
         },
@@ -268,3 +268,5 @@ class SettingsService extends HandleError {
     ],
   }
 }
+
+export const { settingsEvents } = new SettingsService()
