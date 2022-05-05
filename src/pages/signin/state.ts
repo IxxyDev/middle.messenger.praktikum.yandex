@@ -19,5 +19,8 @@ export const signInPageState: SignInProps = {
         type: "password"
       },
     ],
+    title: 'Log in',
+    submitButtonLabel: 'Log in',
+    linkText: 'Have no account? Sign up'
   }
 }

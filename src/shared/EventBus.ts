@@ -8,36 +8,29 @@ export class EventBus {
 	}
 
 	on(event: string, subscriber: unknown, cb: Function) {
-		let listeners = this.listeners[event];
-		if (listeners) {
-			listeners = [];
-		}
+		if (!this.listeners[event]) this.listeners[event] = []
 
-		const isRegistered = listeners.some(listener => listener.subscriber === subscriber && listener.cb === cb);
+		const isRegistered = this.listeners[event].some(listener => listener.subscriber === subscriber && listener.cb === cb);
 
-		if (isRegistered) {
-			return;
-		}
+		if (isRegistered) return
 
-		listeners.push({subscriber, cb});
+		this.listeners[event].push({subscriber, cb});
 	}
 
 	off(event: string, subscriber: unknown, cb: Function) {
-		let listeners = this.listeners[event];
-		if (!listeners) {
+		if (!this.listeners[event]) {
 			throw new Error(`There is no such event: ${event}`);
 		}
 
-		listeners = listeners.filter(listener => listener.subscriber !== subscriber || listener.cb !== cb);
+		this.listeners[event] = this.listeners[event].filter(listener => listener.subscriber !== subscriber || listener.cb !== cb);
 	}
 
 	emit(event: string, ...args: any[]) {
-		const listeners = this.listeners[event];
-		if (!listeners) {
+		if (!this.listeners[event]) {
 			throw new Error(`There is no such event: ${event}`);
 		}
 
-		for (const listener of listeners) {
+		for (const listener of this.listeners[event]) {
 			listener.cb.call(listener.subscriber, ...args);
 		}
 	}

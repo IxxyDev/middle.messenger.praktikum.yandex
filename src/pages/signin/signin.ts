@@ -1,8 +1,9 @@
 import { Block } from "../../shared/Block/Block";
 import { compile } from "../../shared/utils/compileTemplate";
+import { ElementEvents } from "../../shared/global";
 
 import template from './signin.pug'
-import { ElementEvents } from "../../shared/global";
+import './signin.scss'
 import { SIGNIN_EVENT } from "./events";
 import { SignInProps } from "./interfaces";
 import { signInEvents } from "./services";

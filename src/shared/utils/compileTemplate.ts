@@ -11,19 +11,16 @@ export function compile(
   pageEventName: string,
   events: ElementEvents
 ): DocumentFragment {
+
   const parser = new DOMParser();
   const template: string = templatePugFn(props);
   let elementBody: HTMLElement;
 
   try {
     elementBody = parser.parseFromString(template, "text/html").body;
-
     Object.keys(components).forEach(componentName => {
       const childElementTags = elementBody.querySelectorAll(componentName);
-
-      if (!childElementTags.length) {
-        return;
-      }
+      if (!childElementTags.length) return
 
       childElementTags.forEach((element: Element) => {
         const dataName = element.getAttribute("data");
@@ -41,23 +38,19 @@ export function compile(
         }
 
         const path = formPathFromArray([pageEventName, dataName]);
-
         if (Array.isArray(data)) {
           const childComponents = Object.values(data)
             .map((value: Props) => {
               const component = getComponent(componentName, pageEventName, dataName, value, events);
-
               set(componentsState, path, component);
-
               return component;
             });
 
           setAttributes(element, childComponents);
         } else {
+          console.debug(events)
           const childComponent = getComponent(componentName, pageEventName, dataName, data, events);
-
           set(componentsState, path, childComponent);
-
           setAttributes(element, [childComponent]);
         }
       });
@@ -71,7 +64,6 @@ export function compile(
   Array.from(elementBody.children).forEach(elem => {
     fragment.appendChild(elem);
   });
-
   return fragment;
 }
 
@@ -104,11 +96,9 @@ function setAttributes(childElementTag: Element, childComponents: Array<Instance
 
 const getComponent = (componentName: string, pageEventName: string, dataName: string, props: Props, events: ElementEvents): InstanceType<typeof Block> => {
   const component = getValueFromObjectByPath(componentsState, formPathFromArray([pageEventName, dataName]));
-
   if (component) {
     component.destroy();
   }
-
   return getComponentInstance(componentName, props, formEventName(pageEventName, dataName), events);
 }
 

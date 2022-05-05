@@ -7,8 +7,8 @@ import template from './Form.pug';
 import './Form.scss';
 
 export class Form extends Block<FormProps> {
-	constructor(props: FormProps, events: ElementEvents, rootId?: string) {
-		super('form', 'form', props, events, rootId);
+	constructor(props: FormProps, event: string, events: ElementEvents, rootId?: string) {
+		super('div', 'form', props, events, rootId);
 	}
 
 	render() {
