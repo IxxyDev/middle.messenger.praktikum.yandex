@@ -1,22 +1,22 @@
 .search {
-  .&__input {
+  &__input {
     width: 100%;
     height: 32px;
     background-color: #efefef;
     border-radius: 5px;
   }
 
-  .&__input::placeholder {
+  &__input::placeholder {
     text-align: center;
   }
 
-  .&__profile-btn {
+  &__profile-btn {
     border: none;
     background-color: transparent;
     cursor: pointer;
   }
 
-  .&__profile-icon {
+  &__profile-icon {
     background-image: url("../../../static/assets/icons/arrow-right.svg");
   }
 }
