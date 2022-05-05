@@ -1,14 +1,9 @@
 {
-  "extends": [
-    "xo",
-    "xo-typescript"
-  ],
+  "root": true,
+  "extends": ["xo", "xo-typescript"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "rules": {
-    "no-new": 0,
-    "string-quotes": 0,
-    "max-len": [2, 100],
-    "@typescript-eslint/no-unused-vars": 2
+  "env": {
+    "browser": true
   }
 }

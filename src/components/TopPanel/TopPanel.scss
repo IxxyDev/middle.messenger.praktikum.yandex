@@ -1,27 +1,27 @@
 .top-panel {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	max-height: 54px;
-	padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 54px;
+  padding: 10px 20px;
 
-	&__contact-wrapper {
-		display: flex;
-		gap: 10px;
-	}
+  &__contact-wrapper {
+    display: flex;
+    gap: 10px;
+  }
 
-	&__avatar {
-		width: 34px;
-		height: 34px;
-	}
+  &__avatar {
+    width: 34px;
+    height: 34px;
+  }
 
-	&__contact {
-		font-size: 13px;
-		line-height: 1;
-		font-weight: bold;
-	}
+  &__contact {
+    font-size: 13px;
+    line-height: 1;
+    font-weight: bold;
+  }
 
-	&__menu {
-		background-image: url('../../../static/assets/icons/three-dot-menu.svg');
-	}
+  &__menu {
+    background-image: url("../../../static/assets/icons/three-dot-menu.svg");
+  }
 }

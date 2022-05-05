@@ -1,5 +1,5 @@
-import { Props } from "../../shared/global";
+import {Props} from '../../shared/global';
 
 export interface AvatarProps extends Props {
-  imgSrc: string
+	imgSrc: string | null;
 }

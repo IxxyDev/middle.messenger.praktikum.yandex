@@ -1,70 +1,96 @@
-import {Indexed} from "../../shared/global";
+import {Indexed} from '../../shared/global';
+import {queryToString} from "../../shared/utils/queryToString";
 
 export enum HTTPMethods {
-  get = 'GET',
-  post = 'POST',
-  put = 'PUT',
-  delete = 'DELETE',
+	get = 'GET',
+	post = 'POST',
+	put = 'PUT',
+	delete = 'DELETE',
 }
 
 export enum ResponseType {
-  default = '',
-  json = 'json',
-  document = 'document',
-  text = 'text'
+	default = '',
+	json = 'json',
+	document = 'document',
+	text = 'text',
 }
 
 export type Options = {
-  data?: Indexed | FormData
-  headers?: Record<string, string>
-  withCredentials?: boolean
-  responseType?: ResponseType
-}
+	data?: Indexed | FormData;
+	headers?: Record<string, string>;
+	withCredentials?: boolean;
+	responseType?: ResponseType;
+};
 
-type Method = typeof HTTPMethods[keyof typeof HTTPMethods]
+type Method = typeof HTTPMethods[keyof typeof HTTPMethods];
 
 export class Http {
-  private baseUrl: string
+	private readonly baseUrl: string;
 
-  constructor(baseUrl: string) {
-    this.baseUrl = baseUrl
-  }
+	constructor(baseUrl: string) {
+		this.baseUrl = baseUrl;
+	}
 
-  async request<T>(url: string, {
-    data,
-    method,
-    headers,
-    withCredentials,
-    responseType = ResponseType.default
-  }: Options & Method): Promise<T> {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest()
-      xhr.open(method, `${this.baseUrl}${url}`)
-      xhr.responseType = responseType
+	async request<T>(url: string, {
+		data,
+		method,
+		headers,
+		withCredentials,
+		responseType = ResponseType.default,
+	}: Options & Method): Promise<T> {
+		return new Promise((resolve, reject) => {
+			const xhr = new XMLHttpRequest();
+			xhr.open(method, `${this.baseUrl}${url}`);
+			xhr.responseType = responseType;
 
-      if (headers) Object.keys(headers).forEach(key => xhr.setRequestHeader(key, headers[key]))
-      if (withCredentials) xhr.withCredentials = true
+			if (headers) {
+				Object.keys(headers).forEach(key => {
+					xhr.setRequestHeader(key, headers[key]);
+				});
+			}
 
-      xhr.onload = () => {
-        resolve(xhr.response);
-      };
+			if (withCredentials) {
+				xhr.withCredentials = true;
+			}
 
-      xhr.onerror = () => {
-        reject(new Error(`An error occurred while sending: ${xhr.status}`));
-      };
+			xhr.onload = () => {
+				resolve(xhr.response);
+			};
 
+			xhr.onerror = () => {
+				reject(new Error(`An error occurred while sending: ${xhr.status}`));
+			};
 
-      if (method === HTTPMethods.get && !data) {
-        xhr.send();
-      } else if (data instanceof FormData) {
-        xhr.send(data);
-      } else {
-        xhr.send(JSON.stringify(data));
-      }
-    })
-  }
+			if (method === HTTPMethods.get && !data) {
+				xhr.send();
+			} else if (data instanceof FormData) {
+				xhr.send(data);
+			} else {
+				xhr.send(JSON.stringify(data));
+			}
+		});
+	}
 
-  async get<T>(url: string, options: Options = {} as Options): Promise<T> {
+	async get<T>(url: string, options: Options = {} as Options): Promise<T> {
+		const data = options.data ? queryToString(options.data as Indexed) : null
+		const processedUrl = data ? url + data : url
 
-  }
+		return this.request<T>(processedUrl,
+			{...options, method: HTTPMethods.get}, options.timeout)
+	}
+
+	async post<T>(url: string, options: Options): Promise<T> {
+		return this.request<T>(url,
+			{...options, method: HTTPMethods.post}, options.timeout);
+	}
+
+	async put<T>(url: string, options: Options): Promise<T> {
+		return this.request<T>(url,
+			{...options, method: HTTPMethods.put}, options.timeout);
+	}
+
+	async delete<T>(url: string, options: Options): Promise<T> {
+		return this.request<T>(url,
+			{...options, method: HTTPMethods.delete}, options.timeout);
+	}
 }

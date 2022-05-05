@@ -1,6 +1,7 @@
-import {Props} from "../../shared/global";
+import {Props} from '../../shared/global';
+import { ChatProps } from "../Chat/interfaces";
 
 export interface TopPanelProps extends Props {
-  chatName: string;
-  isActiveChat: boolean;
+	chatName: string;
+	currentChat: ChatProps | null;
 }
