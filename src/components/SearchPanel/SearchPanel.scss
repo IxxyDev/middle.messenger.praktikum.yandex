@@ -1,29 +1,22 @@
 .search {
-	.&__input {
-		width: 100%;
-		height: 32px;
-		background-color: #efefef;
-		border-radius: 5px;
-	}
+  .&__input {
+    width: 100%;
+    height: 32px;
+    background-color: #efefef;
+    border-radius: 5px;
+  }
 
-	.&__input::placeholder {
-		text-align: center;
-	}
+  .&__input::placeholder {
+    text-align: center;
+  }
 
-	.&__profile-btn {
-		border: none;
-		background-color: transparent;
-		cursor: pointer;
-	}
+  .&__profile-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
 
-	.&__profile-icon {
-		background-image: url('../../../static/assets/icons/arrow-right.svg');
-	}
+  .&__profile-icon {
+    background-image: url("../../../static/assets/icons/arrow-right.svg");
+  }
 }
-
-
-
-
-
-
-

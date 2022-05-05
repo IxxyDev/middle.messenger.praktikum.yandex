@@ -1,4 +1,4 @@
-@import '../../../static/styles/variables';
+@import "../../../static/styles/variables";
 
 .form {
   min-width: 340px;
@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 6px rgb(0 0 0 / 14%);
   border-radius: 12px;
 
   .&__input {
@@ -55,7 +55,7 @@
   .&__fieldset {
     border: none;
     padding: 0;
-    margin: 0 0 50px 0;
+    margin: 0 0 50px;
     width: 100%;
   }
 }

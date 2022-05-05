@@ -1,11 +1,11 @@
-import {ElementEvents, Props} from "../global"
-import {Block} from '../Block/Block'
+import {ElementEvents, Props} from '../global';
+import {Block} from '../Block/Block';
 
 export type RouteProps = {
-  query: string
-}
+	query: string;
+};
 
 export type BlockHeir = new (
-  props: Props | undefined,
-  events: ElementEvents | undefined,
-  rootId?: string) => InstanceType<typeof Block>
+	props: Props | undefined,
+	events: ElementEvents | undefined,
+	rootId?: string) => InstanceType<typeof Block>;

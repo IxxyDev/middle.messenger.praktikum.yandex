@@ -1,10 +1,9 @@
-import {Block} from "../Block/Block";
-import {REGISTERED_COMPONENTS} from "../registered-components";
-import {ElementEvents, Props} from "../global";
-import {set} from "./set-values-to-object";
-import {getEventName} from "./get-event-name";
-import {getPathFromArray} from "./get-path-from-array";
-import {componentsState, ComponentState} from "../components-state";
+import { Block } from "../Block/Block";
+import { components } from "../../components/components";
+import { ElementEvents, Props, componentsState, ComponentState } from "../global";
+import { set } from "./set";
+import { formEventName } from "./formEventName";
+import { formPathFromArray } from "./formPathFromArray";
 
 export function compile(
   templatePugFn: (locals: Props) => string,
@@ -17,9 +16,9 @@ export function compile(
   let elementBody: HTMLElement;
 
   try {
-    elementBody = parser.parseFromString(template, 'text/html').body;
+    elementBody = parser.parseFromString(template, "text/html").body;
 
-    Object.keys(REGISTERED_COMPONENTS).forEach(componentName => {
+    Object.keys(components).forEach(componentName => {
       const childElementTags = elementBody.querySelectorAll(componentName);
 
       if (!childElementTags.length) {
@@ -34,14 +33,14 @@ export function compile(
           return;
         }
 
-        let data = props[dataName] as Props;
+        const data = props[dataName] as Props;
 
         if (data === undefined) {
           console.error(`Property ${dataName} was not specified in the Props for the ${element}`);
           return;
         }
 
-        const path = getPathFromArray([pageEventName, dataName]);
+        const path = formPathFromArray([pageEventName, dataName]);
 
         if (Array.isArray(data)) {
           const childComponents = Object.values(data)
@@ -61,7 +60,7 @@ export function compile(
 
           setAttributes(element, [childComponent]);
         }
-      })
+      });
     });
   } catch (err: unknown) {
     throw new Error(`Template compilation failed due to ${String(err)}`);
@@ -76,11 +75,11 @@ export function compile(
   return fragment;
 }
 
-function getComponentInstance(componentName: string, props: unknown, eventName: string, events: Events): InstanceType<typeof Block> {
-  return new REGISTERED_COMPONENTS[componentName](props, eventName, events);
+function getComponentInstance(componentName: string, props: unknown, eventName: string, events: ElementEvents): InstanceType<typeof Block> {
+  return new components[componentName](props, eventName, events);
 }
 
-function setAttributes(childElementTag: Element, childComponents: InstanceType<typeof Block>[]): void {
+function setAttributes(childElementTag: Element, childComponents: Array<InstanceType<typeof Block>>): void {
   const attributeNames = childElementTag.getAttributeNames();
 
   const childElements = childComponents.map(childComponent => {
@@ -89,12 +88,12 @@ function setAttributes(childElementTag: Element, childComponents: InstanceType<t
     attributeNames.forEach(attrName => {
       const attrValue = childElementTag.getAttribute(attrName);
 
-      if (attrName === 'class') {
-        childElement.classList.add(attrValue ?? '');
+      if (attrName === "class") {
+        childElement.classList.add(attrValue ?? "");
         return;
       }
 
-      childElement.setAttribute(attrName, attrValue ?? '');
+      childElement.setAttribute(attrName, attrValue ?? "");
     });
 
     return childElement as Node;
@@ -103,18 +102,18 @@ function setAttributes(childElementTag: Element, childComponents: InstanceType<t
   childElementTag.replaceWith(...childElements);
 }
 
-function getComponent(componentName: string, pageEventName: string, dataName: string, props: Props, events: Events): InstanceType<typeof Block> {
-  let component = getValueFromObjectByPath(componentsState, getPathFromArray([pageEventName, dataName]));
+const getComponent = (componentName: string, pageEventName: string, dataName: string, props: Props, events: ElementEvents): InstanceType<typeof Block> => {
+  const component = getValueFromObjectByPath(componentsState, formPathFromArray([pageEventName, dataName]));
 
   if (component) {
     component.destroy();
   }
 
-  return getComponentInstance(componentName, props, getEventName(pageEventName, dataName), events);
+  return getComponentInstance(componentName, props, formEventName(pageEventName, dataName), events);
 }
 
-function getValueFromObjectByPath(state: ComponentState, path: string): InstanceType<typeof Block> | undefined {
-  const pathArray = path.split('.');
+const getValueFromObjectByPath = (state: ComponentState, path: string): InstanceType<typeof Block> | undefined => {
+  const pathArray = path.split(".");
 
   return pathArray.reduce((acc: ComponentState, key: string) => acc && acc[key], state);
 }

@@ -1,7 +1,7 @@
 section.top-panel
   .top-panel__contact-wrapper
     if chatName
-      Avatar.top-panel__avatar
+      Avatar.top-panel__avatar(data='avatar')
       p.top-panel__contact
-  if isActiveChat
+  if currentChat
     .top-panel__menu

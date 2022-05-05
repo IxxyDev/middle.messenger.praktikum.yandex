@@ -1,63 +1,77 @@
-import {InputName, FormValidation, Invalid, ValidItem} from "./interfaces";
+import { FormValidation, InputName, Invalid, ValidItem } from "./interfaces";
 
 export class HandleForm {
-  private readonly formValidation: FormValidation
+  private readonly formValidation: FormValidation;
 
   constructor(formValidation: FormValidation) {
-    this.formValidation = formValidation
+    this.formValidation = formValidation;
   }
 
-  // default serialization
-  private serialize({elements}: HTMLFormElement): Element | null {
+  // Default serialization
+  private serialize({ elements }: HTMLFormElement): Record<string, string> | null {
     return Array.from(elements)
-      .filter((element: HTMLInputElement) => !!element.name)
+      .filter((element: HTMLInputElement) => Boolean(element.name))
       .reduce<Record<string, string>>((result, element: HTMLInputElement) => {
-      const {key, value} = element
-      result[key] = value
+        const { key, value } = element;
+        result[key] = value;
 
-      return result
-    }, {})
+        return result;
+      }, {});
   }
 
-  handleSubmit(event: Event): Element | null {
-    event.preventDefault()
-    return this.serialize(event.target as HTMLFormElement)
+  handleSubmit(event: Event): Record<string, string> | null {
+    event.preventDefault();
+    return this.serialize(event.target as HTMLFormElement);
   }
 
   handleBlur(event: Event): Invalid {
-    const input = event.target as HTMLInputElement
-    const invalid = this.formValidation.validateInput(input)
+    const input = event.target as HTMLInputElement;
+    const invalid = this.formValidation.validateInput(input);
 
-    if (invalid) input.classList.add('invalid')
-    return invalid
+    if (invalid) {
+      input.classList.add("invalid");
+    }
+
+    return invalid;
   }
 
   handleFocus(event: Event): void {
-    const input = event.target as HTMLInputElement
-    input.classList.remove('invalid')
+    const input = event.target as HTMLInputElement;
+    input.classList.remove("invalid");
   }
 
-  validate(event: Event): ValidItem {
-    const {elements} = event.target as HTMLFormElement
+  validate(event: Event): ValidItem[] {
+    const { elements } = event.target as HTMLFormElement;
 
     return Array.from(elements)
-      .filter((input: HTMLInputElement) => !!input.name)
+      .filter((input: HTMLInputElement) => Boolean(input.name))
       .map((input: HTMLInputElement) => {
-        const hasValidation = this.formValidation.hasValidation(input)
-        const invalid = this.formValidation.validateInput(input)
-        const error = document.querySelector(`[error=${input.id}]`)
-        const data = error.getAttribute('data')
+        const hasValidation = this.formValidation.hasValidation(input.name);
+        const invalid = this.formValidation.validateInput(input);
+        const error = document.querySelector(`[error=${input.id}]`);
+        const data = error?.getAttribute("data");
 
-        if (!hasValidation) return null
-        if (invalid) input.classList.add('invalid')
-        if (!error) throw new Error('No element with such id')
-        if (!data) throw new Error('No data attr for input with such id')
+        if (!hasValidation) {
+          return null;
+        }
+
+        if (invalid) {
+          input.classList.add("invalid");
+        }
+
+        if (!error) {
+          throw new Error("No element with such id");
+        }
+
+        if (!data) {
+          throw new Error("No data attr for input with such id");
+        }
 
         return {
-          fieldName: input.name as FieldName,
+          fieldName: input.name as InputName,
           dataName: data,
-          invalid: invalid
-        }
-      })
+          invalid
+        };
+      });
   }
 }

@@ -1,6 +1,6 @@
 form.form(method=method, action=action)
   if inputs
-  h1.form__title=submitButtonLabel
+  h1.form__title=title
   fieldset.form__fieldset
     each input in inputs
       label.form__label(for=input.id)=input.label
@@ -15,5 +15,7 @@ form.form(method=method, action=action)
         autofocus=input.autofocus
         autocomplete = input.autocomplete
       )
-  button.form__button(type="submit")=submitButtonLabel
-  a.form__link(href='/')=linkText
+  if submitButtonLabel
+    button.form__button(type="submit")=submitButtonLabel
+  if linkText
+    a.form__link(href='/')=linkText
