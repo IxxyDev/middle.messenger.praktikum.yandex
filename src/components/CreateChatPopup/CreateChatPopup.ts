@@ -4,7 +4,7 @@ import {mapStateToProps} from '../../shared/store/mapStateToProps';
 import {compile} from '../../shared/utils/compileTemplate';
 import {CreateChatPopupProps} from './interfaces';
 
-import template from './DeleteUserPopup.pug'
+import template from './CreateChatPopup.pug'
 
 export class CreateChatPopup extends Block<CreateChatPopupProps> {
   constructor(props: CreateChatPopupProps, event: string, events?: ElementEvents) {

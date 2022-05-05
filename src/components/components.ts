@@ -17,6 +17,7 @@ import { TopPanel } from "./TopPanel/TopPanel";
 import { UsersMenu } from "./UsersMenu/UsersMenu"
 import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
 import { CreateChatPopup } from "./CreateChatPopup/CreateChatPopup";
+import { ChangeAvatarPopup } from "./ChangeAvatarPopup/ChangeAvatarPopup";
 
 export const components = {
   AddUserPopup,
@@ -25,6 +26,7 @@ export const components = {
   Chat,
   Chats,
   CreateChatPopup,
+  ChangeAvatarPopup,
   DeleteUserPopup,
   EditAvatarPopup,
   ErrorMessage,

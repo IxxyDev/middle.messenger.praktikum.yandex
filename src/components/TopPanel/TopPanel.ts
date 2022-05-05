@@ -3,8 +3,8 @@ import {mapStateToProps} from '../../shared/store/mapStateToProps';
 import {ElementEvents} from '../../shared/global';
 import {compile} from '../../shared/utils/compileTemplate';
 
-import template from './SearchPanel.pug';
-import './SearchPanel.scss';
+import template from './TopPanel.pug';
+import './TopPanel.scss';
 import {TopPanelProps} from './interfaces';
 
 export class TopPanel extends Block<TopPanelProps> {

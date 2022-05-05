@@ -15,6 +15,7 @@ form.form(method=method, action=action)
         autofocus=input.autofocus
         autocomplete = input.autocomplete
       )
+      ErrorMessage(data='errorMessage')
   if submitButtonLabel
     button.form__button(type="submit")=submitButtonLabel
   if linkText
