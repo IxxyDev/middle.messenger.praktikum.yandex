@@ -1,14 +1,24 @@
 @import "../../../static/styles/variables";
 
 .form {
-  min-width: 340px;
-  padding: 30px;
+  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 6px rgb(0 0 0 / 14%);
-  border-radius: 12px;
+
+  &__form {
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 30px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+    border-radius: 12px;
+  }
 
   &__input {
     height: 20px;
@@ -50,6 +60,7 @@
     font-size: 11px;
     line-height: 1;
     color: $primary-color;
+    text-align: center;
   }
 
   &__fieldset {

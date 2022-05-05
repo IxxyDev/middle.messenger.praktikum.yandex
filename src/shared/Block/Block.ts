@@ -2,11 +2,13 @@ import {EventBus} from '../EventBus';
 import {ElementEvents, Props, ElementEvent} from '../global';
 import {EventsTypes, Meta, StoreEvent} from './types';
 import store from '../store/store';
+import { isDeepEqual } from "../utils/isDeepEqual";
+import { cloneDeep } from "../utils/cloneDeep";
 
 export class Block<T> {
 	props: Props;
 	protected readonly meta: Meta;
-	private element: HTMLElement | undefined;
+	private element: HTMLElement;
 	private readonly storeEvents: StoreEvent[] | undefined;
 	protected eventBus: EventBus;
 
@@ -20,15 +22,17 @@ export class Block<T> {
 			rootId,
 		};
 
+		console.debug('ev', this.meta.events)
+
 		this.props = this._makePropsProxy(props);
 		this.registerEventBusEvents(this.eventBus);
-		this.eventBus.emit(EventsTypes.FLOW_CDM);
+		this.eventBus.emit(EventsTypes.INIT);
 	}
 
 	init() {
 		this.createResources();
 		this.addAttributes();
-		this.eventBus.emit(EventsTypes.INIT);
+		this.eventBus.emit(EventsTypes.FLOW_CDM);
 	}
 
 	componentDidMount(): void {
@@ -48,7 +52,7 @@ export class Block<T> {
 	}
 
 	render(): DocumentFragment {
-		console.log('Render is not here yet!');
+		throw new Error('Implement render method')
 	}
 
 	subscribe(event: string, cb: (path: string) => void): void {
@@ -56,21 +60,21 @@ export class Block<T> {
 		this.storeEvents?.push({event, cb});
 	}
 
-	makePropsProxy(props: Props): Props | undefined {
+	makePropsProxy(props: Props): Props | null {
 		return null;
 	}
 
 	getContent(): HTMLElement {
-		return this.element;
+		return this._element;
 	}
 
-	show() {
-		this.getContent().classList.remove('hidden');
-	}
-
-	hide() {
-		this.getContent().classList.add('hidden');
-	}
+	// show() {
+	// 	this.getContent().classList.remove('hidden');
+	// }
+	//
+	// hide() {
+	// 	this.getContent().classList.add('hidden');
+	// }
 
 	destroy() {
 		this.componentWillUnmount();
@@ -82,16 +86,16 @@ export class Block<T> {
 
 	private registerEventBusEvents(eventBus: EventBus) {
 		eventBus.on(EventsTypes.INIT, this, this.init);
-		eventBus.on(EventsTypes.FLOW_CDM, this, this.componentDidMount);
-		eventBus.on(EventsTypes.FLOW_CDU, this, this.componentDidUpdate);
-		eventBus.on(EventsTypes.FLOW_RENDER, this, this.render);
+		eventBus.on(EventsTypes.FLOW_CDM, this, this._componentDidMount);
+		eventBus.on(EventsTypes.FLOW_CDU, this, this._componentDidUpdate);
+		eventBus.on(EventsTypes.FLOW_RENDER, this, this._render);
 	}
 
 	private removeEventBusEvents() {
 		this.eventBus.off(EventsTypes.INIT, this, this.init);
-		this.eventBus.off(EventsTypes.FLOW_CDM, this, this.componentDidMount);
-		this.eventBus.off(EventsTypes.FLOW_CDU, this, this.componentDidUpdate);
-		this.eventBus.off(EventsTypes.FLOW_RENDER, this, this.render);
+		this.eventBus.off(EventsTypes.FLOW_CDM, this, this._componentDidMount);
+		this.eventBus.off(EventsTypes.FLOW_CDU, this, this._componentDidUpdate);
+		this.eventBus.off(EventsTypes.FLOW_RENDER, this, this._render);
 	}
 
 	private createResources() {
@@ -140,7 +144,7 @@ export class Block<T> {
 	private addEvents() {
 		Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
 			eventArray.forEach((event: ElementEvent) => {
-				const nodeElement = this.element?.querySelector(`#${event.id}`);
+				const nodeElement = this._element?.querySelector(`#${event.id}`);
 				if (!nodeElement) {
 					return;
 				}
@@ -151,9 +155,10 @@ export class Block<T> {
 	}
 
 	private removeEvents() {
+		console.debug(this.meta.events, Object.entries(this.meta.events))
 		Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
 			eventArray.forEach((event: ElementEvent) => {
-				const nodeElement = this.element?.querySelector(`#${event.id}`);
+				const nodeElement = this._element?.querySelector(`#${event.id}`);
 				nodeElement && nodeElement.addEventListener(eventName, event.fn);
 			});
 		});
