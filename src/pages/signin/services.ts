@@ -55,13 +55,14 @@ class SignInServices extends HandleError {
     ],
     submit: [
       {
-        id: 'form',
+        id: 'signInForm',
         fn: e => {
           e.preventDefault();
           const isFormValid = this.validateElements(e, 'signInPage', SIGNIN_EVENT);
           if (!isFormValid) return
 
           const formData = this.HandleForm.handleSubmit(e);
+          console.debug(formData)
           if (!formData) return
           SignInController.signIn(formData);
         },

@@ -1,10 +1,10 @@
 export enum InputName {
-	firstName = 'firstName',
-	lastName = 'lastName',
+	firstName = 'first_name',
+	lastName = 'second_name',
 	login = 'login',
 	email = 'email',
 	password = 'password',
-	passwordAgain = 'passwordAgain',
+	repeatPassword = 'repeatPassword',
 	oldPassword = 'oldPassword',
 	newPassword = 'newPassword',
 	phone = 'phone',

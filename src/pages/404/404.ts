@@ -12,7 +12,7 @@ const page404Events: ElementEvents = {
 	click: [
 		{
 			id: 'toChats',
-			fn(e) {
+			fn: e => {
 				e.preventDefault();
 				router.go('/chats');
 			},
@@ -27,7 +27,6 @@ export class Page404 extends Block<Page404Props> {
 
 	componentDidMount() {
 		const root = document.getElementById(this.meta.rootId || 'root');
-		console.debug(root, this.getContent())
 		root?.appendChild(this.getContent());
 	}
 

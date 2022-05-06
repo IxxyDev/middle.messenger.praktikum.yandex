@@ -19,20 +19,20 @@ export const signUpPageState: SignUpProps = {
         type: "text"
       },
       {
-        id: "name",
-        label: "Name",
+        id: "first_name",
+        label: "First name",
         placeholder: "Name",
         required: true,
-        name: "name",
+        name: "first_name",
         type: "text"
       },
       {
-        id: "lastName",
+        id: "second_name",
         label: "Last name",
         placeholder: "Last name",
         required: true,
-        name: "lastName",
-        type: "password"
+        name: "second_name",
+        type: "text"
       },
       {
         id: "phone",
@@ -59,5 +59,10 @@ export const signUpPageState: SignUpProps = {
         type: "password"
       },
     ],
-  }
+    title: 'Sign up',
+    submitButtonLabel: 'Sign up',
+    linkText: 'Have an account? Sign in',
+    linkId: 'toSignIn',
+    formId: 'signUpForm'
+  },
 }

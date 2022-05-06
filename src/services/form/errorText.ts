@@ -33,7 +33,7 @@ export const INPUT_ERROR_TEXT: InputErrorType = {
 		text: PASSWORD_INPUT_VALUE_ERROR,
 		length: PASSWORD_INPUT_LENGTH_ERROR,
 	},
-	[InputName.passwordAgain]: {
+	[InputName.repeatPassword]: {
 		text: PASSWORD_INPUT_VALUE_ERROR,
 		length: PASSWORD_INPUT_LENGTH_ERROR,
 	},

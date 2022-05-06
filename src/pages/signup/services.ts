@@ -43,7 +43,7 @@ class Services extends HandleError {
         fn: e => this.HandleForm.handleFocus(e)
       },
       {
-        id: 'passwordAgain',
+        id: 'repeatPassword',
         fn: e => this.HandleForm.handleFocus(e)
       },
     ],
@@ -121,7 +121,7 @@ class Services extends HandleError {
         },
       },
       {
-        id: 'passwordAgain',
+        id: 'repeatPassword',
         fn: e => {
           const error = this.HandleForm.handleBlur(e);
 
@@ -135,7 +135,7 @@ class Services extends HandleError {
     ],
     submit: [
       {
-        id: 'form',
+        id: 'signUpForm',
         fn: e => {
           e.preventDefault();
           const isFormValid = this.validateElements(e, 'signUp', SIGNUP_EVENT);

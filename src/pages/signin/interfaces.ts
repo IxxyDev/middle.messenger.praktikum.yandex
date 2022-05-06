@@ -7,5 +7,7 @@ export interface SignInProps extends Props {
     submitButtonLabel: string
     title: string
     linkText: string
+    linkId: string
+    formId: string
   }
 }
