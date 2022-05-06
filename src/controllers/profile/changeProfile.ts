@@ -3,6 +3,8 @@ import { Indexed } from "../../shared/global";
 import { ErrorResponse, GetUserInfoResponse } from "../../api/interfaces";
 import { prepareData } from "../prepareData";
 import store from "../../shared/store/store";
+import { isErrorResponse } from "../../shared/utils/isErrorResponse";
+import { UPDATE_USER_EVENT } from "../../pages/settings/events";
 
 const changeProfileApi = new ChangeUser()
 const validationKeys = ['first_name', 'second_name', 'display_name', 'login', 'email', 'phone'];

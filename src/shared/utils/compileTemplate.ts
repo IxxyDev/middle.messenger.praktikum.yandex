@@ -48,7 +48,6 @@ export function compile(
 
           setAttributes(element, childComponents);
         } else {
-          console.debug(events)
           const childComponent = getComponent(componentName, pageEventName, dataName, data, events);
           set(componentsState, path, childComponent);
           setAttributes(element, [childComponent]);

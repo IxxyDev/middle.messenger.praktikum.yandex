@@ -4,6 +4,7 @@ import {ResponseType} from "../../services/http/http";
 import {ErrorResponse, SignUpResponse} from "../../api/interfaces";
 import {router} from "../../routes";
 import {SignUpModel} from "../interfaces";
+import { prepareData } from "../prepareData";
 
 
 const signUpApi = new SignUp()
@@ -24,17 +25,9 @@ export class SignUpController {
       const isValid = signUpValidator(data)
       if (!isValid) throw new Error('Data is invalid')
 
-      const preparedData = {
-        headers: {
-          'content-type': 'application/json',
-        },
-        responseType: ResponseType.json,
-        withCredentials: true,
-        data: data,
-      }
-      const res: SignUpResponse | ErrorResponse = await signUpApi.create(preparedData)
+      const res: SignUpResponse | ErrorResponse = await signUpApi.create(prepareData(data))
       if (isError(res)) throw new Error(res.reason)
-      router.go('/messenger')
+      router.go('/chats')
     } catch (e) {
       console.error(e)
     }

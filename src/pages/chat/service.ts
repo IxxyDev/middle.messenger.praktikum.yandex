@@ -82,7 +82,7 @@ class ChatsService extends HandleError {
           const chatElement = (e.target as HTMLElement).closest('.chat')
           if (!chatElement) return
 
-          const { chats } = store.getState().chatPage.foundChats
+          const { chats } = store.getState().chatPage.chatsList
 
           const currentChat = chats.find((chat: ChatProps) => chat.id === +chatElement.id)
           const token = await GetChatTokenController.getChatToken(+chatElement.id)

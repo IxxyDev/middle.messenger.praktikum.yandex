@@ -12,7 +12,6 @@ class Store extends EventBus {
 
 	public setState(path: string, value: unknown, eventName: string): void {
 		set(this.state, path, value);
-
 		this.emit(eventName, path);
 	}
 }

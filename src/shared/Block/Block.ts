@@ -22,8 +22,6 @@ export class Block<T> {
 			rootId,
 		};
 
-		console.debug('ev', this.meta.events)
-
 		this.props = this._makePropsProxy(props);
 		this.registerEventBusEvents(this.eventBus);
 		this.eventBus.emit(EventsTypes.INIT);
@@ -148,14 +146,12 @@ export class Block<T> {
 				if (!nodeElement) {
 					return;
 				}
-
 				nodeElement.addEventListener(eventName, event.fn);
 			});
 		});
 	}
 
 	private removeEvents() {
-		console.debug(this.meta.events, Object.entries(this.meta.events))
 		Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
 			eventArray.forEach((event: ElementEvent) => {
 				const nodeElement = this._element?.querySelector(`#${event.id}`);

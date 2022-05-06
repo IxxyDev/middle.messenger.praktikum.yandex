@@ -16,10 +16,11 @@ export enum ResponseType {
 }
 
 export type Options = {
-	data?: Indexed | FormData;
-	headers?: Record<string, string>;
-	withCredentials?: boolean;
-	responseType?: ResponseType;
+	data?: Indexed | FormData
+	headers?: Record<string, string>
+	withCredentials?: boolean
+	responseType?: ResponseType
+	timeout?: number
 };
 
 type Method = typeof HTTPMethods[keyof typeof HTTPMethods];
@@ -37,7 +38,7 @@ export class Http {
 		headers,
 		withCredentials,
 		responseType = ResponseType.default,
-	}: Options & Method): Promise<T> {
+	}: Options & { method: Method }, timeout = 10000): Promise<T> {
 		return new Promise((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
 			xhr.open(method, `${this.baseUrl}${url}`);
@@ -49,17 +50,9 @@ export class Http {
 				});
 			}
 
-			if (withCredentials) {
-				xhr.withCredentials = true;
-			}
-
-			xhr.onload = () => {
-				resolve(xhr.response);
-			};
-
-			xhr.onerror = () => {
-				reject(new Error(`An error occurred while sending: ${xhr.status}`));
-			};
+			if (withCredentials) xhr.withCredentials = true;
+			xhr.onload = () => resolve(xhr.response);
+			xhr.onerror = () => reject(new Error(`An error occurred while sending: ${xhr.status}`));
 
 			if (method === HTTPMethods.get && !data) {
 				xhr.send();

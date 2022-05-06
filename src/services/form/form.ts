@@ -12,8 +12,8 @@ export class HandleForm {
     return Array.from(elements)
       .filter((element: HTMLInputElement) => Boolean(element.name))
       .reduce<Record<string, string>>((result, element: HTMLInputElement) => {
-        const { key, value } = element;
-        result[key] = value;
+        const { name, value } = element;
+        result[name] = value;
 
         return result;
       }, {});
@@ -51,21 +51,10 @@ export class HandleForm {
         const error = document.querySelector(`[error=${input.id}]`);
         const data = error?.getAttribute("data");
 
-        if (!hasValidation) {
-          return null;
-        }
-
-        if (invalid) {
-          input.classList.add("invalid");
-        }
-
-        if (!error) {
-          throw new Error("No element with such id");
-        }
-
-        if (!data) {
-          throw new Error("No data attr for input with such id");
-        }
+        if (!hasValidation) return null
+        if (invalid) input.classList.add("invalid");
+        if (!error) throw new Error("No element with such id");
+        if (!data) throw new Error("No data attr for input with such id");
 
         return {
           fieldName: input.name as InputName,

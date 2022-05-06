@@ -1,4 +1,4 @@
-form.form__form(method=method, action=action)
+form.form__form(method=method, action=action id=formId)
   if inputs
   h1.form__title=title
   fieldset.form__fieldset
@@ -19,4 +19,4 @@ form.form__form(method=method, action=action)
   if submitButtonLabel
     button.form__button(type="submit")=submitButtonLabel
   if linkText
-    a.form__link(href='/')=linkText
+    a.form__link(href='#' id=linkId)=linkText

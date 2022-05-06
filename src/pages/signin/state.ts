@@ -21,6 +21,8 @@ export const signInPageState: SignInProps = {
     ],
     title: 'Log in',
     submitButtonLabel: 'Log in',
-    linkText: 'Have no account? Sign up'
+    linkText: 'Have no account? Sign up',
+    linkId: 'toSignUp',
+    formId: 'signInForm'
   }
 }

@@ -12,7 +12,7 @@ const page500Events: ElementEvents = {
 	click: [
 		{
 			id: 'toChats',
-			fn(e) {
+			fn: e => {
 				e.preventDefault();
 				router.go('/chats');
 			},

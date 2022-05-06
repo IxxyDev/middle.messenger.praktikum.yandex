@@ -125,7 +125,7 @@ class SettingsService extends HandleError {
           if (!error) {
             this.hideError('settingsPage.errorName', formEventName(SETTINGS_EVENT, 'errorName'));
           } else {
-            this.showError('settingsPage.errorName', formEventName(SETTINGS_EVENT, 'errorName'), error, InputName.FirstName);
+            this.showError('settingsPage.errorName', formEventName(SETTINGS_EVENT, 'errorName'), error, InputName.firstName);
           }
         },
       },
