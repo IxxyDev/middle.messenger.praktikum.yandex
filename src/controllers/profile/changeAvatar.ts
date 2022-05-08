@@ -4,6 +4,7 @@ import { ErrorResponse, GetUserInfoResponse } from "../../api/interfaces";
 import store from "../../shared/store/store";
 import { formImgSrc } from "../../shared/utils/formImgSrc";
 import { isErrorResponse } from "../../shared/utils/isErrorResponse";
+import { SettingsPage } from "../../pages/settings/settings";
 
 const changeAvatarApi = new ChangeAvatar()
 

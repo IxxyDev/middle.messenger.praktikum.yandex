@@ -4,7 +4,6 @@ import {ErrorResponse, SignUpResponse} from "../interfaces";
 
 export class SignIn extends BaseApi {
   public async create(options: Options): Promise<ErrorResponse | null> {
-    debugger
     const http = new Http(`${HOST}/api/v2/auth/signin`)
     return await http.post<ErrorResponse | null>('', options)
   }

@@ -5,10 +5,11 @@ import { mapStateToProps } from "../../shared/store/mapStateToProps";
 import { compile } from "../../shared/utils/compileTemplate";
 
 import template from './UsersMenu.pug'
+import './UsersMenu.scss'
 
 export class UsersMenu extends Block<UsersMenuProps> {
   constructor(props: UsersMenuProps, event: string, events?: ElementEvents) {
-    super('div', 'usersMenu', props, events);
+    super('div', 'usersMenuWrapper', props, events);
 
     this.subscribe(event, mapStateToProps)
   }

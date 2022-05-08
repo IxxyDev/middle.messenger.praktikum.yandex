@@ -2,14 +2,16 @@ aside.sidebar
   SearchPanel(data='searchPanel')
   Chats(data='chats')
 main.main
-  TopPanel.top-panel(data='topPanel')
   if currentChat
-    if time
-      Time(data='time')
-    Messages(data='chatsList')
-    SendMessagePanel(data='sendMessage')
-    ErrorMessage(data='error')
+    TopPanel(data='topPanel')
+    .main__wrapper
+      if time
+        Time(data='time')
+      Messages(data='chatsList')
+      SendMessagePanel(data='sendMessage')
+      ErrorMessage(data='error')
   else
+  .main__no-chat-wrapper
     h3.main__no-chat-text='Create or select existing chat to start wasting your time'
 
 AddUserPopup(data='addUserPopup')

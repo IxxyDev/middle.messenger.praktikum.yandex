@@ -1,5 +1,4 @@
 import { SettingsPageProps } from "./interfaces";
-import { ChangeAvatarPopupProps } from "../../components/ChangeAvatarPopup/interfaces";
 
 export const settingsState: SettingsPageProps = {
   profileChange: {

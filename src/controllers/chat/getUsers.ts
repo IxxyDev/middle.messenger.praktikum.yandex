@@ -5,6 +5,7 @@ import store from "../../shared/store/store";
 import { formPathFromArray } from "../../shared/utils/formPathFromArray";
 import { formEventName } from "../../shared/utils/formEventName";
 import { formImgSrc } from "../../shared/utils/formImgSrc";
+import { isErrorResponse } from "../../shared/utils/isErrorResponse";
 
 const getUsersApi = new GetUsers()
 

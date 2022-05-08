@@ -59,10 +59,11 @@ export const chatState: ChatPageProps = {
       name: 'chat',
       type: 'text',
     }],
-    title: 'Add user',
+    title: 'Create new chat',
     method: 'POST',
     submitButtonLabel: 'Create new chat',
     isOpened: false,
+    formId: 'createChatPopup'
   },
   deleteUserPopup: {
     inputs: [{

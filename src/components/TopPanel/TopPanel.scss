@@ -1,4 +1,4 @@
-.top-panel {
+.topPanel {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,7 +21,4 @@
     font-weight: bold;
   }
 
-  &__menu {
-    background-image: url("../../../static/assets/icons/three-dot-menu.svg");
-  }
 }

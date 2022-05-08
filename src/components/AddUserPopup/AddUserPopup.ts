@@ -5,6 +5,7 @@ import {compile} from '../../shared/utils/compileTemplate';
 import {AddUserPopupProps} from './interfaces';
 
 import template from './AddUserPopup.pug'
+import './AddUserPopup.scss'
 
 export class AddUserPopup extends Block<AddUserPopupProps> {
 	constructor(props: AddUserPopupProps, event: string, events?: ElementEvents) {

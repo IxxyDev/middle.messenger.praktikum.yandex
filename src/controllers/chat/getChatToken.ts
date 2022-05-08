@@ -1,6 +1,7 @@
 import { GetToken } from "../../api/chat/chat-api";
 import { ResponseType } from "../../services/http/http";
 import { ChatTokenResponse, ErrorResponse } from "../../api/interfaces";
+import { isErrorResponse } from "../../shared/utils/isErrorResponse";
 
 const getTokenApi = new GetToken()
 

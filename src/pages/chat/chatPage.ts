@@ -10,6 +10,7 @@ import { webSocketController } from "../../controllers/websocket/websocket";
 import { compile } from "../../shared/utils/compileTemplate";
 
 import template from './ChatPage.pug'
+import './ChatPage.scss'
 
 export class ChatPage extends Block<ChatPageProps> {
   constructor(props: ChatPageProps = chatState, events: ElementEvents = chatEvents, rootId?: string) {

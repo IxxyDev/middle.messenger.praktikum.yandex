@@ -9,7 +9,7 @@ import {TopPanelProps} from './interfaces';
 
 export class TopPanel extends Block<TopPanelProps> {
 	constructor(props: TopPanelProps, event: string, events?: ElementEvents) {
-		super('div', 'send-message', props, events);
+		super('section', 'topPanel', props, events);
 
 		this.subscribe(event, mapStateToProps);
 	}

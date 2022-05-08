@@ -62,7 +62,7 @@ class SignInServices extends HandleError {
           if (!isFormValid) return
 
           const formData = this.HandleForm.handleSubmit(e);
-          console.debug(formData)
+
           if (!formData) return
           SignInController.signIn(formData);
         },

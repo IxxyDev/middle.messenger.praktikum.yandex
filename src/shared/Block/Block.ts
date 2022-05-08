@@ -41,12 +41,11 @@ export class Block<T> {
 		return isDeepEqual(prevProps, newProps);
 	}
 
-	setProps<T>(newProps: Props): void {
-		if (!newProps) {
-			return;
-		}
+	setProps(newProps: Props): void {
+		if (!newProps) return;
 
 		Object.assign(this.props, newProps);
+		this.eventBus.emit(EventsTypes.FLOW_CDU)
 	}
 
 	render(): DocumentFragment {
