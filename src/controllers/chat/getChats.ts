@@ -8,6 +8,7 @@ import { ChatsProps } from "../../components/Chats/interfaces";
 import { TimeType } from "../../components/Time/interfaces";
 import { formImgSrc } from "../../shared/utils/formImgSrc";
 import { CHAT_EVENT } from "../../pages/chat/events";
+import { isErrorResponse } from "../../shared/utils/isErrorResponse";
 
 const getChatsApi = new GetChats()
 
@@ -34,7 +35,7 @@ const mapDataToStore = (chats: GetChatsResponse): ChatsProps => {
   })
 
   return {
-    ...state.chatPage.chats,
+    ...state.chatPage.chatsList,
     chats: chatCards
   }
 }
@@ -48,11 +49,15 @@ export class GetChatsController {
 
       store.setState(
         formPathFromArray(['chatPage', 'createChatPopup']), {
-        ...store.getState().chatPage.createPopupChat,
+        ...store.getState().chatPage.createChatPopup,
         isOpened: false
       }, formEventName(CHAT_EVENT, 'createChatPopup'))
 
-      store.setState(formPathFromArray(['chatPage', 'chats']), p)
+      store.setState(
+        formPathFromArray(['chatPage', 'chatsList']),
+        mapDataToStore(res),
+        formEventName(CHAT_EVENT, 'chatsList')
+      )
     } catch (e) {
       console.error(e)
     }

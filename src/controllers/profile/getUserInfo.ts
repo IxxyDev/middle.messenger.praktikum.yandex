@@ -4,6 +4,7 @@ import { ErrorResponse, GetUserInfoResponse } from "../../api/interfaces";
 import store from "../../shared/store/store";
 import { SettingsPageProps } from "../../pages/settings/interfaces";
 import { formImgSrc } from "../../shared/utils/formImgSrc";
+import { isErrorResponse } from "../../shared/utils/isErrorResponse";
 
 const getUserInfoApi = new GetUserInfo()
 const mapDataToStore = (data: GetUserInfoResponse): SettingsPageProps => {

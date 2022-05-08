@@ -18,7 +18,6 @@ import { FoundChatsProps } from "../../components/FoundChats/interfaces";
 import { TimeType } from "../../components/Time/interfaces";
 import { GetUserInfoByIdController } from "../../controllers/profile/getUserInfoById";
 import { GetUserInfoResponse } from "../../api/interfaces";
-import { MessagesProps } from "../../components/Messages/interfaces";
 import { formImgSrc } from "../../shared/utils/formImgSrc";
 import { GetUsersController } from "../../controllers/chat/getUsers";
 import { MessageProps } from "../../components/Message/interfaces";
@@ -77,7 +76,7 @@ class ChatsService extends HandleError {
         }
       },
       {
-        id: 'chats',
+        id: 'chatsList',
         fn: async e => {
           const chatElement = (e.target as HTMLElement).closest('.chat')
           if (!chatElement) return
@@ -352,7 +351,7 @@ const startChat = (currentUser: IdAndAvatarModel, currentChat: ChatProps, token:
                 size: '36px'
               }
             },
-            formEventName(CHAT_EVENT)
+            formEventName(CHAT_EVENT, 'chatsList')
           )
 
           subscribeToMessage(currentUser)

@@ -18,7 +18,7 @@ const scrollToBottom = (): void => {
 
 export class Chats extends Block<ChatsProps> {
 	constructor(props: ChatsProps, event: string, events?: ElementEvents) {
-		super('div', 'messages', props, events);
+		super('div', 'chatsList', props, events);
 
 		this.subscribe(event, mapStateToProps);
 	}
@@ -28,6 +28,6 @@ export class Chats extends Block<ChatsProps> {
 	}
 
 	render() {
-		return compile(template, this.props, 'messages', this.meta.events);
+		return compile(template, this.props, 'chatsList', this.meta.events);
 	}
 }

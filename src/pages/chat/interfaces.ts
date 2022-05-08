@@ -1,6 +1,5 @@
 import {Props} from '../../shared/global';
 import {TimeProps} from '../../components/Time/interfaces';
-import {MessagesProps} from '../../components/Messages/interfaces';
 import { AddUserPopupProps } from "../../components/AddUserPopup/interfaces";
 import { DeleteUserPopupProps } from "../../components/DeleteUserPopup/interfaces";
 import { CreateChatPopupProps } from "../../components/CreateChatPopup/interfaces";
