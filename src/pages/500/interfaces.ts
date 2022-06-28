@@ -1,4 +1,4 @@
-import { Props } from "../../shared/global";
+import {Props} from '../../shared/global';
 
 export interface Page500Props extends Props {
 	title: string;

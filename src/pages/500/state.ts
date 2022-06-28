@@ -1,4 +1,4 @@
-import {Page500Props} from "./interfaces";
+import {Page500Props} from './interfaces';
 
 export const page500State: Page500Props = {
 	title: '500',

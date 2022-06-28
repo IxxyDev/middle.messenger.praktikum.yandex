@@ -1,4 +1,4 @@
-import { Props } from "../../shared/global";
+import { Props } from '../../shared/global'
 
 export const ERROR_SHOWN = 'errorMessage_shown'
 

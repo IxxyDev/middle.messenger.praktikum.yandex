@@ -2,7 +2,7 @@ import {Block} from '../../shared/Block/Block';
 import {ElementEvents} from '../../shared/global';
 import {compile} from '../../shared/utils/compileTemplate';
 import {router} from '../../routes';
-import { page500State } from "./state";
+import {page500State} from './state';
 
 import templatePug from './500.pug';
 import './500.scss';
@@ -12,7 +12,7 @@ const page500Events: ElementEvents = {
 	click: [
 		{
 			id: 'toChats',
-			fn: e => {
+			fn(e) {
 				e.preventDefault();
 				router.go('/chats');
 			},

@@ -1,3 +1,1 @@
-export const formPathFromArray = (arr: string[]): string => {
-  return arr.reduce((acc: string, path: string) => `${acc}.${path}`)
-}
+export const formPathFromArray = (arr: string[]): string => arr.reduce((acc: string, path: string) => `${acc}.${path}`);

@@ -1,6 +1,6 @@
-import {Props} from '../../shared/global';
-import { ChatProps } from "../Chat/interfaces";
+import { Props } from '../../shared/global'
+import { ChatProps } from '../Chat/interfaces'
 
 export interface ChatsProps extends Props {
-	chats: ChatProps[] | [];
+  chats: ChatProps[] | []
 }

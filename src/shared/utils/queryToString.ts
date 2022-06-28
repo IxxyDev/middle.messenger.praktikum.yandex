@@ -7,5 +7,5 @@ export const queryToString = (data: Indexed): string => {
 		throw new Error('Not an object');
 	}
 
-	return '?' + getParams(data).map(param => param.join('=')).join('&')
+	return '?' + getParams(data).map(param => param.join('=')).join('&');
 };

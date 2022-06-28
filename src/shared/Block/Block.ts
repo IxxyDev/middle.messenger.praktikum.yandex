@@ -1,205 +1,186 @@
-import {EventBus} from '../EventBus';
-import {ElementEvents, Props, ElementEvent} from '../global';
-import {EventsTypes, Meta, StoreEvent} from './types';
-import store from '../store/store';
+import eventBus, { EventBus } from "../EventBus";
+import { ElementEvents, Props, ElementEvent } from "../global";
+import { EventsTypes, Meta, StoreEvent } from "./types";
+import store from "../store/store";
 import { isDeepEqual } from "../utils/isDeepEqual";
 import { cloneDeep } from "../utils/cloneDeep";
 
 export class Block<T> {
-	props: Props;
-	protected readonly meta: Meta;
-	private element: HTMLElement;
-	private readonly storeEvents: StoreEvent[] | undefined;
-	protected eventBus: EventBus;
+  props: Props;
+  protected readonly meta: Meta;
+  private element: HTMLElement;
+  private readonly storeEvents: StoreEvent[];
+  protected eventBus: EventBus;
 
-	constructor(tagName = 'div', containerClassName: string, props = {}, events: ElementEvents = {}, rootId?: string) {
-		this.eventBus = new EventBus();
-		this.meta = {
-			tagName,
-			containerClassName,
-			props,
-			events,
-			rootId,
-		};
+  constructor(tagName = "div", containerClassName: string, props = {}, events: ElementEvents = {}, rootId?: string) {
+    this.eventBus = eventBus;
+    this.meta = {
+      tagName,
+      containerClassName,
+      props,
+      events,
+      rootId
+    };
 
-		this.props = this._makePropsProxy(props);
-		this.registerEventBusEvents(this.eventBus);
-		this.eventBus.emit(EventsTypes.INIT);
-	}
+    this.props = this._makePropsProxy(props);
+    this.registerEventBusEvents(this.eventBus);
+    this.eventBus.emit(EventsTypes.INIT);
+  }
 
-	init() {
-		this.createResources();
-		this.addAttributes();
-		this.eventBus.emit(EventsTypes.FLOW_CDM);
-	}
+  init() {
+    this.createResources();
+    this.addAttributes();
+    this.eventBus.emit(EventsTypes.FLOW_CDM);
+  }
 
-	componentDidMount(): void {
+  componentDidMount(): void {}
 
-	}
+  componentDidUpdate(prevProps: Props, newProps: Props): boolean {
+    return isDeepEqual(prevProps, newProps);
+  }
 
-	componentDidUpdate(prevProps: Props, newProps: Props): boolean {
-		return isDeepEqual(prevProps, newProps);
-	}
+  setProps(newProps: Props): void {
+    if (!newProps) return;
 
-	setProps(newProps: Props): void {
-		if (!newProps) return;
+    Object.assign(this.props, newProps);
+    this.eventBus.emit(EventsTypes.FLOW_CDU);
+  }
 
-		Object.assign(this.props, newProps);
-		this.eventBus.emit(EventsTypes.FLOW_CDU)
-	}
+  render(): DocumentFragment | void {}
 
-	render(): DocumentFragment {
-		throw new Error('Implement render method')
-	}
+  subscribe(event: string, cb: (path: string) => void): void {
+    store.on(event, this, cb);
+    this.storeEvents?.push({ event, cb });
+  }
 
-	subscribe(event: string, cb: (path: string) => void): void {
-		store.on(event, this, cb);
-		this.storeEvents?.push({event, cb});
-	}
+  makePropsProxy(props: Props): Props | undefined | void {}
 
-	makePropsProxy(props: Props): Props | null {
-		return null;
-	}
+  getContent(): HTMLElement {
+    return this._element;
+  }
 
-	getContent(): HTMLElement {
-		return this._element;
-	}
+  destroy() {
+    this.componentWillUnmount();
+  }
 
-	// show() {
-	// 	this.getContent().classList.remove('hidden');
-	// }
-	//
-	// hide() {
-	// 	this.getContent().classList.add('hidden');
-	// }
+  get _element(): HTMLElement {
+    return this.element;
+  }
 
-	destroy() {
-		this.componentWillUnmount();
-	}
+  private registerEventBusEvents(eventBus: EventBus) {
+    eventBus.on(EventsTypes.INIT, this, this.init);
+    eventBus.on(EventsTypes.FLOW_CDM, this, this._componentDidMount);
+    eventBus.on(EventsTypes.FLOW_CDU, this, this._componentDidUpdate);
+    eventBus.on(EventsTypes.FLOW_RENDER, this, this._render);
+  }
 
-	get _element(): HTMLElement {
-		return this.element;
-	}
+  private removeEventBusEvents() {
+    this.eventBus.off(EventsTypes.INIT, this, this.init);
+    this.eventBus.off(EventsTypes.FLOW_CDM, this, this._componentDidMount);
+    this.eventBus.off(EventsTypes.FLOW_CDU, this, this._componentDidUpdate);
+    this.eventBus.off(EventsTypes.FLOW_RENDER, this, this._render);
+  }
 
-	private registerEventBusEvents(eventBus: EventBus) {
-		eventBus.on(EventsTypes.INIT, this, this.init);
-		eventBus.on(EventsTypes.FLOW_CDM, this, this._componentDidMount);
-		eventBus.on(EventsTypes.FLOW_CDU, this, this._componentDidUpdate);
-		eventBus.on(EventsTypes.FLOW_RENDER, this, this._render);
-	}
+  private createResources() {
+    this.element = this.createDocumentElement(this.meta.tagName);
+  }
 
-	private removeEventBusEvents() {
-		this.eventBus.off(EventsTypes.INIT, this, this.init);
-		this.eventBus.off(EventsTypes.FLOW_CDM, this, this._componentDidMount);
-		this.eventBus.off(EventsTypes.FLOW_CDU, this, this._componentDidUpdate);
-		this.eventBus.off(EventsTypes.FLOW_RENDER, this, this._render);
-	}
+  private addAttributes() {
+    this.element?.setAttribute("component", this.constructor.name);
 
-	private createResources() {
-		this.element = this.createDocumentElement(this.meta.tagName);
-	}
+    this.meta.containerClassName && this.element?.classList.add(this.meta.containerClassName);
+  }
 
-	private addAttributes() {
-		this.element?.setAttribute('component', this.constructor.name);
+  private _componentDidMount() {
+    console.log('MOUNTED');
+    this.componentDidMount();
+    this.eventBus.emit(EventsTypes.FLOW_RENDER);
+  }
 
-		this.meta.containerClassName && this.element?.classList.add(this.meta.containerClassName);
-	}
+  private componentWillUnmount() {
+    this.removeAllEvents();
+    const root = document.getElementById(this.meta.rootId || "");
 
-	private _componentDidMount() {
-		this.componentDidMount();
-		this.eventBus.emit(EventsTypes.FLOW_RENDER);
-	}
+    if (root) {
+      root.innerHTML = "";
+    }
+  }
 
-	private componentWillUnmount() {
-		this.removeAllEvents();
-		const root = document.getElementById(this.meta.rootId || '');
+  private _componentDidUpdate(prevProps: Props, newProps: Props) {
+    const isEqual = this.componentDidUpdate(prevProps, newProps);
+    if (!isEqual) {
+      this.eventBus.emit(EventsTypes.FLOW_RENDER);
+    }
+  }
 
-		if (root) {
-			root.innerHTML = '';
-		}
-	}
+  private _render() {
+    this.removeEvents();
+    this.element.innerHTML = "";
+    this.element?.appendChild(this.render());
+    this.addEvents();
+  }
 
-	private _componentDidUpdate(prevProps: Props, newProps: Props) {
-		const isEqual = this.componentDidUpdate(prevProps, newProps);
+  private createDocumentElement(tagName: string): HTMLElement {
+    return document.createElement(tagName);
+  }
 
-		if (!isEqual) {
-			this.eventBus.emit(EventsTypes.FLOW_RENDER);
-		}
-	}
+  private addEvents() {
+    Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
+      eventArray.forEach((event: ElementEvent) => {
+        const nodeElement = this._element?.querySelector(`#${event.id}`);
+        nodeElement?.addEventListener(eventName, event.fn);
+      });
+    });
+  }
 
-	private _render() {
-		this.removeEvents();
-		this.element.innerHTML = '';
-		this.element?.appendChild(this.render());
-		this.addEvents();
-	}
+  private removeEvents() {
+    Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
+      eventArray.forEach((event: ElementEvent) => {
+        const nodeElement = this._element?.querySelector(`#${event.id}`);
+        nodeElement?.addEventListener(eventName, event.fn);
+      });
+    });
+  }
 
-	private createDocumentElement(tagName: string): HTMLElement {
-		return document.createElement(tagName);
-	}
+  private removeStoreEvents() {
+    this.storeEvents?.forEach(({ event, cb }) => {
+      store.off(event, this, cb);
+    });
+  }
 
-	private addEvents() {
-		Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
-			eventArray.forEach((event: ElementEvent) => {
-				const nodeElement = this._element?.querySelector(`#${event.id}`);
-				if (!nodeElement) {
-					return;
-				}
-				nodeElement.addEventListener(eventName, event.fn);
-			});
-		});
-	}
+  private removeAllEvents() {
+    this.removeEventBusEvents();
+    this.removeEvents();
+    this.removeStoreEvents();
+  }
 
-	private removeEvents() {
-		Object.entries(this.meta.events).forEach(([eventName, eventArray = []]) => {
-			eventArray.forEach((event: ElementEvent) => {
-				const nodeElement = this._element?.querySelector(`#${event.id}`);
-				nodeElement && nodeElement.addEventListener(eventName, event.fn);
-			});
-		});
-	}
+  private _makePropsProxy(props: Props): Props {
+    const propsFromCustomMethod = this.makePropsProxy(props);
 
-	private removeStoreEvents() {
-		this.storeEvents?.forEach(({event, cb}) => {
-			store.off(event, this, cb);
-		});
-	}
+    if (propsFromCustomMethod) return propsFromCustomMethod;
 
-	private removeAllEvents() {
-		this.removeEventBusEvents();
-		this.removeEvents();
-		this.removeStoreEvents();
-	}
+    return new Proxy<Props>(props, {
+      get(target: Props, prop: string): unknown {
+        const value = target[prop];
 
-	private _makePropsProxy(props: Props): Props {
-		const propsFromCustomMethod = this.makePropsProxy(props);
+        return typeof value === "function" ? value.bind(target) : value;
+      },
+      set: (
+        target: Props,
+        prop: string,
+        value: string | Record<string, unknown>
+      ): boolean => {
+        const targetCopy = cloneDeep(target);
+        target[prop] = value;
 
-		if (propsFromCustomMethod) {
-			return propsFromCustomMethod;
-		}
+        this.eventBus.emit(EventsTypes.FLOW_CDU, targetCopy, target);
 
-		return new Proxy<Props>(props, {
-			get(target: Props, prop: string): unknown {
-				const value = target[prop];
-
-				return typeof value === 'function' ? value.bind(target) : value;
-			},
-			set: (
-				target: Props,
-				prop: string,
-				value: string | Record<string, unknown>,
-			): boolean => {
-				const targetCopy = cloneDeep(target);
-				target[prop] = value;
-
-				this.eventBus.emit(EventsTypes.FLOW_CDU, targetCopy, target);
-
-				return true;
-			},
-			deleteProperty(target: Props, prop: string): boolean {
-				delete target[prop];
-				return true;
-			},
-		});
-	}
+        return true;
+      },
+      deleteProperty(target: Props, prop: string): boolean {
+        delete target[prop];
+        return true;
+      }
+    });
+  }
 }

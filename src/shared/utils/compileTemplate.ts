@@ -11,7 +11,7 @@ export function compile(
   pageEventName: string,
   events: ElementEvents
 ): DocumentFragment {
-
+  console.log('COMPILE', templatePugFn(props));
   const parser = new DOMParser();
   const template: string = templatePugFn(props);
   let elementBody: HTMLElement;
@@ -20,8 +20,9 @@ export function compile(
     elementBody = parser.parseFromString(template, "text/html").body;
     Object.keys(components).forEach(componentName => {
       const childElementTags = elementBody.querySelectorAll(componentName);
-      if (!childElementTags.length) return
-
+      if (!childElementTags.length) {
+        return;
+      }
       childElementTags.forEach((element: Element) => {
         const dataName = element.getAttribute("data");
 
@@ -41,14 +42,14 @@ export function compile(
         if (Array.isArray(data)) {
           const childComponents = Object.values(data)
             .map((value: Props) => {
-              const component = getComponent(componentName, pageEventName, dataName, value, events);
+              const component = getComponent(componentName as keyof typeof components, pageEventName, dataName, value, events);
               set(componentsState, path, component);
               return component;
             });
 
           setAttributes(element, childComponents);
         } else {
-          const childComponent = getComponent(componentName, pageEventName, dataName, data, events);
+          const childComponent = getComponent(componentName as keyof typeof components, pageEventName, dataName, data, events);
           set(componentsState, path, childComponent);
           setAttributes(element, [childComponent]);
         }
@@ -66,7 +67,15 @@ export function compile(
   return fragment;
 }
 
-function getComponentInstance(componentName: string, props: unknown, eventName: string, events: ElementEvents): InstanceType<typeof Block> {
+function getComponentInstance<T extends keyof typeof components>(
+  componentName: T,
+  props: ConstructorParameters<typeof components[T]>[0],
+  eventName: string,
+  events: ElementEvents
+): InstanceType<typeof Block> {
+  // @ts-ignore
+  console.log(components, new components[componentName](props, eventName, events));
+  // @ts-ignore
   return new components[componentName](props, eventName, events);
 }
 
@@ -93,16 +102,15 @@ function setAttributes(childElementTag: Element, childComponents: Array<Instance
   childElementTag.replaceWith(...childElements);
 }
 
-const getComponent = (componentName: string, pageEventName: string, dataName: string, props: Props, events: ElementEvents): InstanceType<typeof Block> => {
+const getComponent = (componentName: keyof typeof components, pageEventName: string, dataName: string, props: Props, events: ElementEvents): InstanceType<typeof Block> => {
   const component = getValueFromObjectByPath(componentsState, formPathFromArray([pageEventName, dataName]));
-  if (component) {
-    component.destroy();
-  }
-  return getComponentInstance(componentName, props, formEventName(pageEventName, dataName), events);
-}
+  if (component) component.destroy();
+
+  return getComponentInstance<keyof typeof components>(componentName, props, formEventName(pageEventName, dataName), events);
+};
 
 const getValueFromObjectByPath = (state: ComponentState, path: string): InstanceType<typeof Block> | undefined => {
   const pathArray = path.split(".");
-
+  // @ts-ignore
   return pathArray.reduce((acc: ComponentState, key: string) => acc && acc[key], state);
-}
+};

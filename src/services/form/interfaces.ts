@@ -14,13 +14,13 @@ export enum InputName {
 export type Invalid = {
 	text?: true;
 	length?: true;
-} | null;
+} | undefined;
 
 export type ValidItem = ({
 	fieldName: InputName;
 	dataName: string;
 	invalid: Invalid;
-} | null);
+} | undefined);
 
 export interface FormValidation {
 	validateInput: (element: HTMLInputElement) => Invalid;
@@ -28,6 +28,6 @@ export interface FormValidation {
 }
 
 export type InputErrorType = Record<string, {
-	text: string | null;
-	length: string | null;
+	text: string | undefined;
+	length: string | undefined;
 }>;

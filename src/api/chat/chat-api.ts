@@ -1,52 +1,52 @@
-import {Http, Options} from "../../services/http/http";
-import {BaseApi, HOST} from "../baseApi";
-import {ChatTokenResponse, CreateChatResponse, ErrorResponse, GetChatsResponse, GetUsersResponse} from "../interfaces";
+import { Http, Options } from '../../services/http/http'
+import { BaseApi, HOST } from '../baseApi'
+import { ChatTokenResponse, CreateChatResponse, ErrorResponse, GetChatsResponse, GetUsersResponse } from '../interfaces'
 
 export class CreateChat extends BaseApi {
-  public async create(options: Options): Promise<CreateChatResponse | ErrorResponse | null> {
+  public async create(options: Options): Promise<CreateChatResponse | ErrorResponse | undefined> {
     const http = new Http(`${HOST}/api/v2/chats`)
-    return await http.post<CreateChatResponse | ErrorResponse | null>('', options)
+    return http.post<CreateChatResponse | ErrorResponse | undefined>('', options)
   }
 }
 
 export class GetChats extends BaseApi {
   public async read(options: Options): Promise<GetChatsResponse | ErrorResponse> {
     const http = new Http(`${HOST}/api/v2/chats`)
-    return await http.get<GetChatsResponse | ErrorResponse>('', options)
+    return http.get<GetChatsResponse | ErrorResponse>('', options)
   }
 }
 
 export class AddUsers extends BaseApi {
-  public async update(options: Options): Promise<ErrorResponse | null> {
+  public async update(options: Options): Promise<ErrorResponse | undefined> {
     const http = new Http(`${HOST}/api/v2/chats/users`)
-    return await http.put<ErrorResponse | null>('', options)
+    return http.put<ErrorResponse | undefined>('', options)
   }
 }
 
 export class GetToken extends BaseApi {
   public async read(options: Options, chatId: number): Promise<ChatTokenResponse | ErrorResponse> {
     const http = new Http(`${HOST}/api/v2/chats/token`)
-    return await http.post<ChatTokenResponse | ErrorResponse>(`${chatId}`, options)
+    return http.post<ChatTokenResponse | ErrorResponse>(`${chatId}`, options)
   }
 }
 
 export class GetUsers extends BaseApi {
   public async read(options: Options): Promise<GetUsersResponse | ErrorResponse> {
     const http = new Http(`${HOST}/api/v2/user/search`)
-    return await http.post<GetUsersResponse | ErrorResponse>('', options)
+    return http.post<GetUsersResponse | ErrorResponse>('', options)
   }
 }
 
 export class GetUsersByChat extends BaseApi {
   public async read(options: Options, chatId: number): Promise<GetUsersResponse | ErrorResponse> {
     const http = new Http(`${HOST}/api/v2/chats/`)
-    return await http.post<GetUsersResponse | ErrorResponse>(`${chatId}/users`, options)
+    return http.post<GetUsersResponse | ErrorResponse>(`${chatId}/users`, options)
   }
 }
 
 export class DeleteUsers extends BaseApi {
-  public async delete(options: Options): Promise<ErrorResponse | null> {
+  public async delete(options: Options): Promise<ErrorResponse | undefined> {
     const http = new Http(`${HOST}/api/v2/chats/users`)
-    return await http.delete<ErrorResponse | null>('', options)
+    return http.delete<ErrorResponse | undefined>('', options)
   }
 }

@@ -3,7 +3,7 @@ import {Validation} from './form/validation';
 import {InputName, Invalid} from './form/interfaces';
 import {INPUT_ERROR_TEXT} from './form/errorText';
 import store from '../shared/store/store';
-import { ERROR_SHOWN } from "../components/ErrorMessage/interfaces";
+import {ERROR_SHOWN} from '../components/ErrorMessage/interfaces';
 
 export class HandleError {
 	protected HandleForm: HandleForm;

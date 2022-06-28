@@ -1,4 +1,4 @@
-import { AvatarProps } from "../Avatar/interfaces";
+import { AvatarProps } from '../Avatar/interfaces'
 
 export type Contact = {
   id: number

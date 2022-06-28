@@ -1,1 +1,1 @@
-export const CHAT_EVENT = 'ChatPage'
+export const CHAT_EVENT = 'ChatPage';
