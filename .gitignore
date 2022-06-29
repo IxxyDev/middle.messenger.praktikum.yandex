@@ -4,4 +4,4 @@ dist
 package-lock.json
 .github
 .idea
-.parcel-cache
+/.parcel-cache
