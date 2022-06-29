@@ -1,0 +1,11 @@
+mixin chat(data)
+  li.chats__item(class=data.current && 'chats__item--active')
+    .chats__user-wrapper
+      img.chats__image(src=data.avatar)
+      .chats__content
+        strong.chats__name=data.name
+        span.chats__message=data.message
+    .chats__info
+      time.chats__time=data.time
+      if (data.newMessage && data.newMessageCount)
+        span.chats__message-count= data.newMessageCount
