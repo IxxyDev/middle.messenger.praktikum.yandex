@@ -1,9 +1,9 @@
-import eventBus, { EventBus } from "../EventBus";
-import { ElementEvents, Props, ElementEvent } from "../global";
-import { EventsTypes, Meta, StoreEvent } from "./types";
-import store from "../store/store";
-import { isDeepEqual } from "../utils/isDeepEqual";
-import { cloneDeep } from "../utils/cloneDeep";
+import { EventBus } from '../EventBus';
+import { ElementEvents, Props, ElementEvent } from '../global';
+import { EventsTypes, Meta, StoreEvent } from './types';
+import store from '../store/store';
+import { isDeepEqual } from '../utils/isDeepEqual';
+import { cloneDeep } from '../utils/cloneDeep';
 
 export class Block<T> {
   props: Props;
@@ -12,14 +12,14 @@ export class Block<T> {
   private readonly storeEvents: StoreEvent[];
   protected eventBus: EventBus;
 
-  constructor(tagName = "div", containerClassName: string, props = {}, events: ElementEvents = {}, rootId?: string) {
-    this.eventBus = eventBus;
+  constructor(tagName = 'div', containerClassName: string, props = {}, events: ElementEvents = {}, rootId?: string) {
+    this.eventBus = new EventBus();
     this.meta = {
       tagName,
       containerClassName,
       props,
       events,
-      rootId
+      rootId,
     };
 
     this.props = this._makePropsProxy(props);
@@ -86,23 +86,22 @@ export class Block<T> {
   }
 
   private addAttributes() {
-    this.element?.setAttribute("component", this.constructor.name);
+    this.element?.setAttribute('component', this.constructor.name);
 
     this.meta.containerClassName && this.element?.classList.add(this.meta.containerClassName);
   }
 
   private _componentDidMount() {
-    console.log('MOUNTED');
     this.componentDidMount();
     this.eventBus.emit(EventsTypes.FLOW_RENDER);
   }
 
   private componentWillUnmount() {
     this.removeAllEvents();
-    const root = document.getElementById(this.meta.rootId || "");
+    const root = document.getElementById(this.meta.rootId || '');
 
     if (root) {
-      root.innerHTML = "";
+      root.innerHTML = '';
     }
   }
 
@@ -115,7 +114,7 @@ export class Block<T> {
 
   private _render() {
     this.removeEvents();
-    this.element.innerHTML = "";
+    this.element.innerHTML = '';
     this.element?.appendChild(this.render());
     this.addEvents();
   }
@@ -163,13 +162,9 @@ export class Block<T> {
       get(target: Props, prop: string): unknown {
         const value = target[prop];
 
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
-      set: (
-        target: Props,
-        prop: string,
-        value: string | Record<string, unknown>
-      ): boolean => {
+      set: (target: Props, prop: string, value: string | Record<string, unknown>): boolean => {
         const targetCopy = cloneDeep(target);
         target[prop] = value;
 
@@ -180,7 +175,7 @@ export class Block<T> {
       deleteProperty(target: Props, prop: string): boolean {
         delete target[prop];
         return true;
-      }
+      },
     });
   }
 }

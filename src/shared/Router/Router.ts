@@ -1,26 +1,26 @@
-import { Route } from "./Route";
-import { BlockInstance } from "./types";
+import { Route } from './Route';
+import { Inheritor } from './types';
 
 export class Router {
   private static instance: Router;
   private readonly query: string;
-  private readonly currentRoute: Route | null;
+  private currentRoute: Route | null;
   private readonly routes: Route[];
   private fallBackPathname: string;
   private readonly history: History;
 
   constructor(query: string) {
     if (Router.instance) return Router.instance;
-    Router.instance = this;
 
     this.routes = [];
     this.history = window.history;
     this.query = query;
     this.currentRoute = null;
-    this.fallBackPathname = "";
+    // this.fallBackPathname = "";
+    Router.instance = this;
   }
 
-  use(pathname: string, block: BlockInstance) {
+  use(pathname: string, block: Inheritor) {
     const route = new Route(pathname, block, { query: this.query });
     this.routes.push(route);
     return this;
@@ -39,7 +39,9 @@ export class Router {
 
     if (!route) return;
 
-    this.currentRoute?.leave();
+    if (this.currentRoute) this.currentRoute.leave();
+
+    this.currentRoute = route;
     route.render();
   }
 
@@ -48,11 +50,11 @@ export class Router {
   }
 
   go(pathname: string) {
-    this.history.pushState({}, "", pathname);
+    this.history.pushState({}, '', pathname);
     this.onRoute(pathname);
   }
 
-  fallback(pathname: string, block: BlockInstance) {
+  fallback(pathname: string, block: Inheritor) {
     this.use(pathname, block);
     this.fallBackPathname = pathname;
     return this;
