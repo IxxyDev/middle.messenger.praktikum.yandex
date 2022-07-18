@@ -1,0 +1,22 @@
+form.form__form(method=method, action=action id=formId)
+  if inputs
+  h1.form__title=title
+  fieldset.form__fieldset
+    each input in inputs
+      label.form__label(for=input.id)=input.label
+      input.form__input(
+        placeholder=input.placeholder
+        required=input.required
+        name=input.name
+        id=input.id
+        type=input.type
+        maxlength=input.maxlength
+        minlength=input.minlength
+        autofocus=input.autofocus
+        autocomplete = input.autocomplete
+      )
+      ErrorMessage(data='errorMessage')
+  if submitButtonLabel
+    button.form__button(type="submit")=submitButtonLabel
+  if linkText
+    a.form__link(href='#' id=linkId)=linkText

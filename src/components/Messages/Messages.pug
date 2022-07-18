@@ -1,0 +1,4 @@
+.messages__wrapper(id='chatsList')
+if messages.length
+  each message in messages
+    Message.messages__message(data=message)

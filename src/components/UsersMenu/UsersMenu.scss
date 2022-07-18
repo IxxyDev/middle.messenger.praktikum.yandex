@@ -1,0 +1,26 @@
+.usersMenu {
+	position: absolute;
+	top: 65px;
+	right: 10px;
+	width: 210px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 15px;
+	visibility: hidden;
+	background-color: #fff;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+	border-radius: 12px;
+
+	&_is-opened {
+		visibility: visible;
+	}
+
+	&__button {
+		border: none;
+		background-color: transparent;
+		display: flex;
+		gap: 15px;
+		align-items: center;
+	}
+}

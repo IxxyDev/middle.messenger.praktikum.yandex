@@ -1,0 +1,6 @@
+div(class=`message ${isMe ? 'message_type_mine' : ''}`)
+  if isMe
+   .message__status-icon
+  p.message__text=text
+  if time
+    Time.message__time(data='time')

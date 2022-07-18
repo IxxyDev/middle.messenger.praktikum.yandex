@@ -1,0 +1,26 @@
+.message {
+  display: flex;
+  background-color: #f8f8f8;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  max-width: 402px;
+  padding: 11px;
+
+  &__type_mine {
+    background-color: #e4edfd;
+    flex-direction: row-reverse;
+  }
+
+  &__status-icon {
+    width: 10px;
+    height: 4px;
+    background-image: url("../../../static/assets/icons/message-ok.svg");
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: right;
+  }
+}

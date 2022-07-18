@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "extends": ["xo", "xo-typescript"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "env": {
+    "browser": true
+  }
+}

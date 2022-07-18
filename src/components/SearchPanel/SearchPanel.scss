@@ -1,0 +1,43 @@
+.search {
+  &__input {
+    width: 100%;
+    background-color: #efefef;
+    border-radius: 5px;
+    border: none;
+    font-size: 12px;
+    line-height: 1;
+    padding: 10px;
+  }
+
+  &__profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 8px 10px 22px;
+    font-size: 12px;
+    line-height: 1;
+    color: #999999;
+  }
+
+  &__input::placeholder {
+    text-align: center;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__profile-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__add-chat {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}

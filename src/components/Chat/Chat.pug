@@ -1,0 +1,12 @@
+section.chat
+  Avatar.chat__avatar(data='avatar')
+  .chat__text
+    h4.chat__contact-name=contactName
+    if isMe
+     p.chat__preview <b>You</b>: #{text}
+    else
+      p.chat__preview You: #{text}
+  .chat__info
+    if time
+      Time.chat__time=time
+      .chats__count=newMessagesCount

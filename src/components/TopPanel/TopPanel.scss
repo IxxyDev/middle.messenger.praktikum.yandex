@@ -1,0 +1,24 @@
+.topPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 54px;
+  padding: 10px 20px;
+
+  &__contact-wrapper {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__avatar {
+    width: 34px;
+    height: 34px;
+  }
+
+  &__contact {
+    font-size: 13px;
+    line-height: 1;
+    font-weight: bold;
+  }
+
+}

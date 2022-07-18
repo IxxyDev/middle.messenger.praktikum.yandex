@@ -1,0 +1,15 @@
+.search
+  .search__profile
+    button(class="search__profile-btn" type='button')='Profile'
+    include ../../../static/assets/icons/arrow-right.svg
+  .search__input-wrapper
+    input(
+      type='search'
+      class='search__input'
+      id=id
+      placeholder=placeholder
+      name=name
+      value=value
+    )
+    button.search__add-chat(id='openCreateChatPopup' type='button')
+      include ../../../static/assets/icons/add-chat.svg

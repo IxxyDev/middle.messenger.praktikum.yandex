@@ -1,0 +1,16 @@
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+
+  &__info {
+    margin-bottom: 69px;
+    text-align: center;
+  }
+
+  &__title {
+    font-weight: normal;
+  }
+}

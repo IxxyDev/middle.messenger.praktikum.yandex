@@ -1,0 +1,33 @@
+.chatPage {
+	display: flex;
+	height: 100vh;
+}
+
+.sidebar {
+	width: 320px;
+	padding: 14px 10px 0;
+	overflow: hidden;
+	flex-basis: 25%;
+	background-color: #FBFBFB;
+	border-right: 1px solid #EAEAEA;
+}
+
+.main {
+	flex-basis: 75%;
+
+	&__no-chat-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__no-chat-text {
+		font-size: 12px;
+		line-height: 1;
+		font-weight: normal;
+		color: #999999;
+	}
+}
