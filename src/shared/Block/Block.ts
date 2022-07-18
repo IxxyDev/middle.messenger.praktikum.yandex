@@ -43,7 +43,6 @@ export class Block<T> {
     if (!newProps) return;
 
     Object.assign(this.props, newProps);
-    this.eventBus.emit(EventsTypes.FLOW_CDU);
   }
 
   render(): DocumentFragment | void {}
@@ -86,7 +85,7 @@ export class Block<T> {
   }
 
   private addAttributes() {
-    this.element?.setAttribute('component', this.constructor.name);
+    this.element?.setAttribute('data-component', this.constructor.name);
 
     this.meta.containerClassName && this.element?.classList.add(this.meta.containerClassName);
   }
